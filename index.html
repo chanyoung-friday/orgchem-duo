@@ -76,6 +76,7 @@
   .prog{flex:1; height:14px; background:var(--line); border-radius:99px; overflow:hidden}
   .prog>i{display:block; height:100%; background:var(--green); border-radius:99px; transition:width .35s}
   .fc{flex:1; display:flex; flex-direction:column; padding:8px 18px 0}
+  .fc:has(.qbox.quiz){flex:0 0 auto}
   .fc .tag{font-size:12px; font-weight:800; color:var(--purple); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px}
   .fc .qbox{flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center; min-height:180px}
   .fc .q{font-size:21px; font-weight:800; line-height:1.45}
@@ -103,9 +104,9 @@
   .tips b{color:var(--text)}
   .badge{display:inline-block; font-size:11px; font-weight:800; padding:2px 8px; border-radius:99px; background:var(--amber); color:#5a4300; margin-left:6px}
   /* ---- Quiz ---- */
-  .opts{display:flex; flex-direction:column; gap:10px}
+  .opts{display:flex; flex-direction:column; gap:8px}
   .opt{width:100%; text-align:left; border:2px solid var(--line); background:var(--card); color:var(--text);
-       border-radius:14px; padding:14px 15px; font-size:15px; font-weight:700; cursor:pointer;
+       border-radius:13px; padding:11px 13px; font-size:14.5px; font-weight:700; cursor:pointer;
        box-shadow:0 2px 0 var(--line); transition:transform .04s; display:flex; gap:10px; align-items:baseline}
   .opt b{color:var(--muted); font-weight:800}
   .opt:active{transform:translateY(2px); box-shadow:none}
@@ -114,11 +115,24 @@
   .opt.correct b{color:var(--green-d)}
   .opt.wrong{border-color:var(--red); background:rgba(255,75,75,.15); color:var(--red); box-shadow:none}
   .opt.wrong b{color:var(--red)}
-  .qsvg{display:flex; justify-content:center; margin:16px 0}
-  .qsvg svg{width:200px; height:auto}
+  .qsvg{display:flex; justify-content:center; margin:10px 0}
+  .qsvg svg{width:150px; height:auto}
+  /* 퀴즈: 한 화면에 들어오도록 위쪽 정렬 + 여백 축소 */
+  .fc .qbox.quiz{justify-content:flex-start; min-height:0; flex:0 0 auto; text-align:left}
+  .fc .q.qq{font-size:17px; line-height:1.4}
+  .qbox.quiz + *, .fc .qbox.quiz{margin-bottom:2px}
   .qsvg .bond{stroke:var(--text); stroke-width:3; fill:none; stroke-linecap:round}
   .qsvg .atom{fill:var(--card); stroke:var(--text); stroke-width:3}
   .qsvg .dot{fill:var(--text)}
+  /* 타이핑 능동회상 */
+  .ansin{width:100%; min-height:64px; margin-top:14px; border:2px solid var(--line); border-radius:12px;
+         padding:11px 13px; font-size:15px; font-family:inherit; line-height:1.45;
+         background:var(--bg); color:var(--text); resize:none; -webkit-user-select:text; user-select:text}
+  .ansin:focus{outline:none; border-color:var(--blue)}
+  .youans{border:2px dashed var(--line); border-radius:12px; padding:10px 13px; margin:4px 0 8px;
+          font-size:14px; line-height:1.55; color:var(--text); -webkit-user-select:text; user-select:text}
+  .youans b{color:var(--muted); font-weight:800; margin-right:5px}
+  .abox b.alab{color:var(--purple); font-weight:800}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -439,16 +453,41 @@ function renderCard(){
   $("#s-prog").style.width = Math.min(100,(qIndex/Math.max(1,queue.length))*100)+"%";
   const c = queue[qIndex];
   if(isQuiz(c)) return renderQuizItem(c);      // 퀴즈 문항이면 객관식으로
-  const kind = /왜|이유|why|reason|cause|explain/i.test(c.q) ? "🧠 Explain the reasoning out loud" : "Answer it yourself first, then check";
+  const isPrev = sessMode==="Preview";
+  const why = /왜|이유|why|reason|cause|explain/i.test(c.q);
+  const kind = isPrev ? "Recall it in your head, then check"
+             : why  ? "🧠 Explain the reasoning — type the key idea"
+                    : "✍️ Type what you remember, then check";
   body.innerHTML = `<div class="tag">${c.ch} · ${c.topic}${c.weak?' <span class="badge" style="background:var(--red);color:#fff">🔴 Weak</span>':''}</div>
-    <div class="qbox"><div class="q">${c.q}</div><div class="kind">${kind}</div></div>`;
-  ctrl.innerHTML = `<button class="btn" id="reveal">Show answer</button>`;
-  $("#reveal").onclick = ()=>revealCard(c);
+    <div class="qbox" style="justify-content:flex-start"><div class="q">${c.q}</div><div class="kind">${kind}</div>${isPrev?'':'<textarea id="ans-input" class="ansin" rows="2" spellcheck="false" autocapitalize="sentences" placeholder="Type the key idea in your own words…"></textarea>'}</div>`;
+  if(isPrev){
+    ctrl.innerHTML = `<button class="btn" id="reveal">Show answer</button>`;
+    $("#reveal").onclick = ()=>revealCard(c);
+  } else {
+    ctrl.innerHTML = `<button class="btn" id="reveal" disabled>Check answer</button>
+      <button class="btn ghost" id="dunno">I don't know — show me</button>`;
+    const inp=$("#ans-input"), chk=$("#reveal");
+    inp.addEventListener("input", ()=>chk.toggleAttribute("disabled", inp.value.trim().length<2));
+    inp.addEventListener("keydown", e=>{ if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); if(inp.value.trim().length>=2) revealCard(c, inp.value); } });
+    chk.onclick=()=>revealCard(c, inp.value);
+    $("#dunno").onclick=()=>revealCard(c, "", true);
+    setTimeout(()=>{ try{ inp.focus(); }catch(e){} }, 30);
+  }
 }
-function revealCard(c){
+function revealCard(c, typed, dunno){
   const body=$("#fc-body"), ctrl=$("#fc-controls");
+  const inp=$("#ans-input"); if(inp) inp.setAttribute("disabled","");
+  if(sessMode!=="Preview"){
+    const you=document.createElement("div"); you.className="youans";
+    const lab=document.createElement("b"); lab.textContent="You:"; you.appendChild(lab);
+    const val=(dunno || !typed || !typed.trim()) ? "—" : typed.trim();
+    you.appendChild(document.createTextNode(" "+val));
+    body.appendChild(you);
+  }
   const ans = document.createElement("div");
-  ans.className="abox"; ans.textContent = c.a;
+  ans.className="abox";
+  const alab=document.createElement("b"); alab.className="alab"; alab.textContent="Answer  "; ans.appendChild(alab);
+  ans.appendChild(document.createTextNode(c.a));
   body.appendChild(ans);
   ans.scrollIntoView({behavior:"smooth", block:"nearest"});
   if(sessMode!=="Preview"){
@@ -519,7 +558,69 @@ const SV_NEWMAN_STAG = `<svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000
 const SV_HEXANE = `<svg viewBox="0 0 190 110" xmlns="http://www.w3.org/2000/svg" aria-label="skeletal chain">
   <polyline class="bond" points="15,78 45,42 75,78 105,42 135,78 165,42"/>
 </svg>`;
+const SV_NEWMAN_ECL = `<svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg" aria-label="Newman projection">
+  <line class="bond" x1="90" y1="56" x2="84" y2="30"/>
+  <line class="bond" x1="66" y1="131" x2="47" y2="148"/>
+  <line class="bond" x1="143" y1="114" x2="167" y2="122"/>
+  <circle class="atom" cx="100" cy="100" r="46"/>
+  <line class="bond" x1="100" y1="100" x2="100" y2="28"/>
+  <line class="bond" x1="100" y1="100" x2="38" y2="136"/>
+  <line class="bond" x1="100" y1="100" x2="162" y2="136"/>
+  <circle cx="100" cy="100" r="6" class="dot"/>
+</svg>`;
+const SV_BRANCHED = `<svg viewBox="0 0 170 105" xmlns="http://www.w3.org/2000/svg" aria-label="branched skeletal">
+  <polyline class="bond" points="20,78 52,45 84,78 116,45"/>
+  <line class="bond" x1="52" y1="45" x2="52" y2="12"/>
+</svg>`;
 const QUIZ = [
+  {id:"q13", ch:"Ch.2", q:"Which molecule has a dipole moment of exactly zero?",
+   opts:["CH₄","H₂O","NH₃","CH₃Cl"], a:0,
+   ex:"CH₄ is a symmetric tetrahedron, so its four C–H bond dipoles cancel as vectors. The other three are unsymmetrical and keep a net dipole."},
+  {id:"q14", ch:"Ch.1", q:"다음 중 sp 혼성 탄소를 가진 분자는?",
+   opts:["에테인 CH₃CH₃","에틸렌 CH₂=CH₂","아세틸렌 HC≡CH","메테인 CH₄"], a:2,
+   ex:"삼중결합 탄소가 sp 혼성. σ도메인 2개 → 180° 직선형. (이중결합=sp², 단일=sp³)"},
+  {id:"q15", ch:"Ch.3", q:"Which conformation is drawn here?", svg:SV_NEWMAN_ECL,
+   opts:["Staggered","Eclipsed","Anti","Gauche"], a:1,
+   ex:"The front and back bonds line up (dihedral ≈ 0°) instead of alternating — that is the eclipsed conformation, the energy maximum."},
+  {id:"q16", ch:"Ch.2", q:"암모늄 이온(NH₄⁺)에서 질소의 형식전하는?",
+   opts:["0","+1","−1","+2"], a:1,
+   ex:"FC = 원자가 5 − (결합전자 8÷2) − 비공유 0 = +1."},
+  {id:"q17", ch:"Ch.1", q:"How many lone pairs does the oxygen in water carry?",
+   opts:["0","1","2","3"], a:2,
+   ex:"Oxygen has 6 valence electrons; two go into the O–H bonds, leaving two lone pairs. That gives the bent ~104.5° shape."},
+  {id:"q18", ch:"Ch.2", q:"다음 중 수소결합을 '줄 수' 없는 분자는?",
+   opts:["H₂O","NH₃","CH₄","CH₃OH"], a:2,
+   ex:"수소결합을 주려면 O·N에 붙은 δ+ 수소가 필요. C–H는 EN 차가 작아 δ+가 안 생김."},
+  {id:"q19", ch:"Ch.1", q:"How many σ bonds are there in ethane (C₂H₆)?",
+   opts:["6","7","8","9"], a:1,
+   ex:"Six C–H bonds plus one C–C bond = 7 σ bonds. Every single bond is a σ bond."},
+  {id:"q20", ch:"Ch.3", q:"골격구조(skeletal structure)에서 꼭짓점 하나가 뜻하는 것은?",
+   opts:["수소 원자","탄소 원자","결합 하나","작용기"], a:1,
+   ex:"모든 꼭짓점과 선의 끝 = 탄소. 탄소에 붙은 H는 옥텟을 채우는 만큼 생략."},
+  {id:"q21", ch:"Ch.3", q:"How many carbons does this structure have?", svg:SV_BRANCHED,
+   opts:["4","5","6","7"], a:1,
+   ex:"Four carbons along the main chain plus one on the branch = 5 (2-methylbutane). Count every vertex and every line end."},
+  {id:"q22", ch:"Ch.2", q:"아세트산(CH₃COOH)과 에탄올(CH₃CH₂OH) 중 더 센 산은?",
+   opts:["아세트산","에탄올","같다","비교 불가"], a:0,
+   ex:"아세트산의 짝염기(아세테이트)는 두 산소에 공명 비편재화되어 안정 → pKa 4.76. 에탄올은 그런 안정화가 없어 ~16."},
+  {id:"q23", ch:"Ch.2", q:"Resonance structures differ only in the position of…",
+   opts:["the atoms","the π and lone-pair electrons","the bonds and the atoms","the molecular geometry"], a:1,
+   ex:"Nuclei stay put; only π and nonbonding electrons move. If atoms moved you would have a different molecule, not a resonance form."},
+  {id:"q24", ch:"Ch.1", q:"C≡C 삼중결합 주위의 결합각은?",
+   opts:["109.5°","120°","150°","180°"], a:3,
+   ex:"삼중결합 탄소는 sp 혼성 → 두 sp 오비탈이 180°로 마주봄 = 직선형."},
+  {id:"q25", ch:"Ch.2", q:"Which force acts even between completely nonpolar molecules?",
+   opts:["Hydrogen bonding","Dipole–dipole","Dispersion (London) forces","Ionic attraction"], a:2,
+   ex:"A momentary shift of electrons creates a temporary dipole, which induces an opposite one next door. This is why nonpolar alkanes still condense."},
+  {id:"q26", ch:"Ch.3", q:"뷰테인(C₄H₁₀)의 구조 이성질체는 몇 개인가?",
+   opts:["1개","2개","3개","4개"], a:1,
+   ex:"곧은 사슬 n-뷰테인과 가지 달린 아이소뷰테인(2-메틸프로페인) 2개."},
+  {id:"q27", ch:"Ch.3", q:"Starting from a staggered ethane and rotating the back carbon 60°, what do you get?",
+   opts:["Another staggered form","An eclipsed form","An anti form","A gauche form"], a:1,
+   ex:"Staggered and eclipsed alternate every 60°. Anti and gauche need a molecule with substituents larger than H, such as butane."},
+  {id:"q28", ch:"Ch.1", q:"sp³ 혼성 오비탈 하나에 들어갈 수 있는 전자는 최대 몇 개인가?",
+   opts:["1개","2개","4개","8개"], a:1,
+   ex:"어떤 오비탈이든 최대 2개(파울리 배타원리), 스핀은 반대."},
   {id:"q1", ch:"Ch.3", q:"이 뉴먼 투영식(Newman projection)이 나타내는 형태와 안정성은?", svg:SV_NEWMAN_STAG,
    opts:["엇갈린형(staggered) — 가장 안정","엇갈린형(staggered) — 가장 불안정","가려진형(eclipsed) — 가장 안정","가려진형(eclipsed) — 가장 불안정"], a:0,
    ex:"앞·뒤 결합이 60° 어긋나 겹치지 않음 = 엇갈린형. 오비탈 정렬로 안정화되어 가장 안정한 형태."},
@@ -563,8 +664,8 @@ function buildTodayQueue(){
   const cards = buildReviewQueue();
   const pool = QUIZ.slice(); interleave(pool);
   const nQuiz = cards.length
-      ? Math.min(pool.length, Math.max(3, Math.round(cards.length/3)))
-      : Math.min(pool.length, 8);
+      ? Math.min(pool.length, 14, Math.max(6, cards.length))   // 객관식 비중 ↑ (카드와 비슷하게)
+      : Math.min(pool.length, 10);
   const picked = pool.slice(0, nQuiz);
   const weak  = cards.filter(c=>c.weak);
   const mixed = cards.filter(c=>!c.weak).concat(picked);
@@ -575,8 +676,8 @@ function isQuiz(x){ return !!x && Array.isArray(x.opts); }
 function renderQuizItem(q){
   const body=$("#fc-body"), ctrl=$("#fc-controls");
   body.innerHTML = `<div class="tag">${q.ch} · Quiz</div>
-    <div class="qbox" style="justify-content:flex-start">
-      <div class="q" style="font-size:18px">${q.q}</div>
+    <div class="qbox quiz">
+      <div class="q qq">${q.q}</div>
       ${q.svg?('<div class="qsvg">'+q.svg+'</div>'):''}
     </div>`;
   ctrl.innerHTML = `<div class="opts">`+
