@@ -310,6 +310,7 @@ if(state.goal==null) state.goal = 15;
 if(!state.dayDone) state.dayDone = {};  // date -> count
 if(!state.extraCards) state.extraCards = [];  // 세션에서 가져온 새 카드
 if(!state.overrides) state.overrides = {};    // {id:{st?, weak?}} 내장카드 상태 변경
+if(!state.appliedSyncs) state.appliedSyncs = []; // one-tap 링크 중복 적용 방지 (sid 목록)
 
 // --- 저장된 동기화 결과를 CARDS 에 병합 (진도/약점 유지) ---
 (function mergeStored(){
@@ -748,10 +749,21 @@ function buildExport(){
   };
 }
 // ---------- SYNC: 클로드 → 앱 (가져오기) ----------
+// 입력이 JSON 코드든, ?sync= 링크든, 순수 base64url 토큰이든 → 동기화 JSON 문자열로 정규화
+function extractSyncJSON(text){
+  text = (text||"").trim();
+  if(!text) return "";
+  var m = text.match(/[?#&]sync=([A-Za-z0-9\-_]+)/);
+  if(m){ try{ return b64urlToStr(m[1]); }catch(e){ return ""; } }
+  if(text.indexOf("{") < 0 && /^[A-Za-z0-9\-_]+={0,2}$/.test(text)){
+    try{ return b64urlToStr(text); }catch(e){}
+  }
+  return text; // 순수 JSON 코드로 간주
+}
 function applyImport(text){
   let d;
-  try{ d = JSON.parse((text||"").trim()); }
-  catch(e){ return {ok:false, msg:"⚠️ Couldn't read that code. Make sure you pasted the whole thing."}; }
+  try{ d = JSON.parse(extractSyncJSON(text)); }
+  catch(e){ return {ok:false, msg:"⚠️ Couldn't read that code/link. Make sure you pasted the whole thing."}; }
   if(!d || d.type!=="orgchem-sync") return {ok:false, msg:"⚠️ That isn't an OrgChem update code."};
   let added=0, weakN=0, promo=0, mast=0;
   (d.addCards||[]).forEach(function(ec){
@@ -822,6 +834,33 @@ $("#btn-apply").onclick = ()=>{
     renderHome();
   }
 };
+
+// ---------- one-tap 링크 동기화 (?sync=<base64url(JSON)>) ----------
+function b64urlToStr(s){ s=s.replace(/-/g,"+").replace(/_/g,"/"); while(s.length%4) s+="="; var bin=atob(s); var bytes=Uint8Array.from(bin,function(c){return c.charCodeAt(0);}); return new TextDecoder("utf-8").decode(bytes); }
+function strHash(s){ var h=0; for(var i=0;i<s.length;i++){ h=(h*31 + s.charCodeAt(i))|0; } return (h>>>0).toString(36); }
+function cleanUrl(){ try{ history.replaceState(null,"",location.pathname); }catch(e){} }
+function flashSync(msg){
+  var t=document.createElement("div"); t.textContent=msg;
+  t.style.cssText="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);max-width:90%;background:#1f2937;color:#fff;padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.45;box-shadow:0 6px 24px rgba(0,0,0,.3);z-index:9999;text-align:center;opacity:0;transition:opacity .25s";
+  document.body.appendChild(t);
+  requestAnimationFrame(function(){ t.style.opacity="1"; });
+  setTimeout(function(){ t.style.opacity="0"; setTimeout(function(){ t.remove(); },300); }, 4600);
+}
+(function urlSync(){
+  try{
+    var qs=new URLSearchParams(location.search); var raw=qs.get("sync");
+    if(!raw && location.hash.indexOf("sync=")>=0){ raw=location.hash.split("sync=")[1]; }
+    if(!raw) return;
+    var json=b64urlToStr(raw); var d=JSON.parse(json);
+    if(!d || d.type!=="orgchem-sync"){ cleanUrl(); return; }
+    if(!state.appliedSyncs) state.appliedSyncs=[];
+    var sid = d.sid || ("h"+strHash(json));
+    if(state.appliedSyncs.indexOf(sid) >= 0){ cleanUrl(); flashSync("✓ 이미 적용된 동기화예요."); return; }
+    var r=applyImport(json);
+    if(r.ok){ state.appliedSyncs.push(sid); save(); }
+    cleanUrl(); flashSync(r.msg);
+  }catch(e){ /* 링크 파싱 실패 시 조용히 무시 */ }
+})();
 
 // ---------- INIT ----------
 renderHome();
