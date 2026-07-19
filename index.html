@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="OrgChem">
+<meta name="theme-color" content="#58cc02">
+<title>OrgChem — Organic Chemistry Drills</title>
+<style>
+  :root{
+    --green:#58cc02; --green-d:#46a302; --green-l:#d7ffb8;
+    --purple:#7c3aed; --purple-l:#ede9fe;
+    --amber:#ffc800; --red:#ff4b4b; --blue:#1cb0f6;
+    --bg:#fff; --card:#fff; --text:#3c3c3c; --muted:#777;
+    --line:#e5e5e5; --shadow:0 2px 0 rgba(0,0,0,.08);
+    --btnshadow:0 4px 0;
+    --radius:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131f24; --card:#1e2f38; --text:#e8f0f2; --muted:#8fa3ad;
+      --line:#2b3f49; --green-l:#22422a; --purple-l:#2a2340;
+      --shadow:0 2px 0 rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro","Segoe UI",Roboto,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.5;
+    overscroll-behavior:none; -webkit-user-select:none; user-select:none;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  #app{max-width:520px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column}
+  .pad{padding:16px 18px}
+  /* ---- Top bar ---- */
+  .topbar{display:flex; align-items:center; gap:14px; padding:12px 18px 8px; font-weight:800}
+  .stat{display:flex; align-items:center; gap:5px; font-size:17px}
+  .stat .ico{font-size:19px}
+  .stat.streak{color:var(--amber)}
+  .stat.xp{color:var(--green)}
+  .stat.gems{color:var(--blue); margin-left:auto}
+  /* ---- Cards / sections ---- */
+  h1{font-size:22px; font-weight:800; margin:2px 0 2px}
+  .sub{color:var(--muted); font-size:14px; margin-bottom:14px}
+  .panel{background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin-bottom:14px}
+  .goalbar{height:16px; background:var(--line); border-radius:99px; overflow:hidden; margin:10px 0}
+  .goalbar>i{display:block; height:100%; background:var(--green); border-radius:99px; transition:width .5s cubic-bezier(.2,.8,.2,1)}
+  .row{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  .muted{color:var(--muted); font-size:13px}
+  /* ---- Buttons ---- */
+  .btn{display:block; width:100%; border:none; border-radius:var(--radius); padding:15px; font-size:16px; font-weight:800;
+       cursor:pointer; letter-spacing:.02em; color:#fff; background:var(--green); box-shadow:var(--btnshadow) var(--green-d);
+       transition:transform .04s, box-shadow .04s; text-transform:uppercase; margin-bottom:12px}
+  .btn:active{transform:translateY(3px); box-shadow:0 1px 0 var(--green-d)}
+  .btn.sec{background:var(--card); color:var(--blue); border:2px solid var(--line); box-shadow:0 3px 0 var(--line)}
+  .btn.sec:active{transform:translateY(2px); box-shadow:0 1px 0 var(--line)}
+  .btn.ghost{background:transparent; color:var(--muted); box-shadow:none; text-transform:none; font-weight:700}
+  .btn[disabled]{opacity:.5; pointer-events:none}
+  /* ---- Chapter progress ---- */
+  .chip{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; padding:4px 10px; border-radius:99px; background:var(--green-l); color:var(--green-d)}
+  .chrow{display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--line)}
+  .chrow:last-child{border-bottom:none}
+  .chrow .nm{flex:1; font-weight:700; font-size:15px}
+  .chrow .mini{width:70px; height:9px; background:var(--line); border-radius:99px; overflow:hidden}
+  .chrow .mini>i{display:block; height:100%; background:var(--green)}
+  .chrow .cnt{font-size:12px; color:var(--muted); width:44px; text-align:right}
+  .star{color:var(--amber)}
+  /* ---- Session / flashcard ---- */
+  .sess{flex:1; display:flex; flex-direction:column}
+  .sessbar{display:flex; align-items:center; gap:12px; padding:12px 18px}
+  .close{font-size:26px; color:var(--muted); background:none; border:none; cursor:pointer; line-height:1; font-weight:400}
+  .prog{flex:1; height:14px; background:var(--line); border-radius:99px; overflow:hidden}
+  .prog>i{display:block; height:100%; background:var(--green); border-radius:99px; transition:width .35s}
+  .fc{flex:1; display:flex; flex-direction:column; padding:8px 18px 0}
+  .fc .tag{font-size:12px; font-weight:800; color:var(--purple); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px}
+  .fc .qbox{flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center; min-height:180px}
+  .fc .q{font-size:21px; font-weight:800; line-height:1.45}
+  .fc .kind{margin-top:14px; font-size:13px; color:var(--muted)}
+  .abox{background:var(--purple-l); border-radius:var(--radius); padding:16px; margin:6px 0 10px; font-size:16px; line-height:1.6;
+        animation:pop .25s ease; -webkit-user-select:text; user-select:text}
+  @keyframes pop{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+  .grade{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .grade button{border:none; border-radius:14px; padding:14px 8px; font-size:14px; font-weight:800; color:#fff; cursor:pointer; box-shadow:var(--btnshadow) rgba(0,0,0,.18)}
+  .grade button:active{transform:translateY(2px)}
+  .g-again{background:var(--red)} .g-hard{background:#ff9600} .g-good{background:var(--green)} .g-easy{background:var(--blue)}
+  .grade small{display:block; font-weight:600; opacity:.85; font-size:11px; margin-top:2px}
+  /* ---- Done screen ---- */
+  .done{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px}
+  .done .big{font-size:64px; margin-bottom:8px}
+  .done h2{font-size:24px; font-weight:800; margin-bottom:6px}
+  /* ---- Bottom nav ---- */
+  .nav{position:sticky; bottom:0; display:flex; background:var(--card); border-top:2px solid var(--line);
+       padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
+  .nav button{flex:1; background:none; border:none; cursor:pointer; color:var(--muted); font-size:11px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:3px}
+  .nav button .ni{font-size:23px}
+  .nav button.on{color:var(--green)}
+  .hidden{display:none !important}
+  .tips{font-size:13px; color:var(--muted); line-height:1.7}
+  .tips b{color:var(--text)}
+  .badge{display:inline-block; font-size:11px; font-weight:800; padding:2px 8px; border-radius:99px; background:var(--amber); color:#5a4300; margin-left:6px}
+  /* ---- Quiz ---- */
+  .opts{display:flex; flex-direction:column; gap:10px}
+  .opt{width:100%; text-align:left; border:2px solid var(--line); background:var(--card); color:var(--text);
+       border-radius:14px; padding:14px 15px; font-size:15px; font-weight:700; cursor:pointer;
+       box-shadow:0 2px 0 var(--line); transition:transform .04s; display:flex; gap:10px; align-items:baseline}
+  .opt b{color:var(--muted); font-weight:800}
+  .opt:active{transform:translateY(2px); box-shadow:none}
+  .opt[disabled]{cursor:default}
+  .opt.correct{border-color:var(--green); background:var(--green-l); color:var(--green-d); box-shadow:none}
+  .opt.correct b{color:var(--green-d)}
+  .opt.wrong{border-color:var(--red); background:rgba(255,75,75,.15); color:var(--red); box-shadow:none}
+  .opt.wrong b{color:var(--red)}
+  .qsvg{display:flex; justify-content:center; margin:16px 0}
+  .qsvg svg{width:200px; height:auto}
+  .qsvg .bond{stroke:var(--text); stroke-width:3; fill:none; stroke-linecap:round}
+  .qsvg .atom{fill:var(--card); stroke:var(--text); stroke-width:3}
+  .qsvg .dot{fill:var(--text)}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+<div id="app">
+  <!-- ========== HOME ========== -->
+  <div id="view-home">
+    <div class="topbar">
+      <span class="stat streak"><span class="ico">🔥</span><span id="t-streak">0</span><span style="font-size:13px;color:var(--muted);font-weight:700;margin-left:3px">day streak</span></span>
+    </div>
+    <div class="pad">
+      <h1>Hey, Chanyoung 👋</h1>
+      <p class="sub" id="home-sub">Ready for today's round?</p>
+
+      <div class="panel">
+        <div class="row"><b>Daily goal</b><span class="muted"><span id="g-done">0</span> / <span id="g-goal">15</span> items</span></div>
+        <div class="goalbar"><i id="g-fill" style="width:0%"></i></div>
+        <div class="muted" id="g-msg">Start with the cards that are due.</div>
+      </div>
+
+      <button class="btn" id="btn-today">▶ Start today's session (<span id="rv-count">0</span>)</button>
+      <button class="btn sec" id="btn-preview">🔭 Preview next section</button>
+
+      <div class="panel" style="margin-top:6px">
+        <div class="row" style="margin-bottom:6px"><b>Chapters</b><span class="chip" id="mastery-chip">0% seen</span></div>
+        <div id="ch-list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="row" style="margin-bottom:8px"><b>💡 How to use this</b></div>
+        <div class="tips">
+          <b>Five minutes a day</b> on the train or between classes is enough to keep the streak alive.<br>
+          <b>Today's session</b> mixes flashcards that are due with multiple-choice questions. <b>Preview</b> gives you a first look at the next section.<br>
+          If a card won't come to you, hit <b>Again</b>. Forgetting and retrieving is what builds the memory.
+        </div>
+      </div>
+      <div class="panel">
+        <div class="row" style="margin-bottom:6px"><b>🔄 Sync with Claude</b><span class="muted" id="sync-when"></span></div>
+        <p class="tips" style="margin-bottom:12px">Pull in what you studied with Claude, and send your progress back so Claude knows what you're struggling with.</p>
+        <button class="btn sec" id="btn-import">📥 Paste update from Claude</button>
+        <button class="btn sec" id="btn-export">📤 Copy my progress</button>
+        <textarea id="sync-io" class="hidden" spellcheck="false" autocapitalize="off" autocorrect="off"
+          style="width:100%;min-height:120px;border:2px solid var(--line);border-radius:12px;padding:10px;
+                 font-size:12px;font-family:ui-monospace,Menlo,monospace;background:var(--bg);color:var(--text);
+                 -webkit-user-select:text;user-select:text;margin-bottom:10px"></textarea>
+        <button class="btn hidden" id="btn-apply">Apply</button>
+        <div class="muted" id="sync-msg"></div>
+      </div>
+      <button class="btn ghost" id="btn-reset">Reset progress</button>
+      <p class="muted" style="text-align:center; padding-bottom:20px">Based on McMurry 9e · personal study · v5</p>
+    </div>
+  </div>
+
+  <!-- ========== SESSION ========== -->
+  <div id="view-sess" class="sess hidden">
+    <div class="sessbar">
+      <button class="close" id="s-close">✕</button>
+      <div class="prog"><i id="s-prog" style="width:0%"></i></div>
+      <span class="muted" id="s-mode">Review</span>
+    </div>
+    <div class="fc" id="fc-body"></div>
+    <div class="pad" id="fc-controls"></div>
+  </div>
+
+  <!-- ========== PROGRESS ========== -->
+  <div id="view-stats" class="hidden">
+    <div class="pad">
+      <h1>Progress</h1>
+      <p class="sub">The more you review a card, the longer it waits before coming back.</p>
+      <div class="panel">
+        <div class="row"><span>🔥 Current streak</span><b><span id="st-streak">0</span> days</b></div>
+        <div class="row"><span>🗂 Cards studied</span><b><span id="st-seen">0</span> / <span id="st-total">0</span></b></div>
+        <div class="row"><span>⏰ Ready to study now</span><b id="st-due">0</b></div>
+        <div class="row"><span>🏆 In long-term memory</span><b id="st-mature">0</b></div>
+      </div>
+      <div class="panel">
+        <div class="row" style="margin-bottom:8px"><b>By chapter</b></div>
+        <div id="st-chlist"></div>
+      </div>
+      <p class="muted" style="text-align:center; padding-bottom:20px">Everything stays on this device.</p>
+    </div>
+  </div>
+
+  <!-- ========== BOTTOM NAV ========== -->
+  <div class="nav" id="nav">
+    <button data-v="home" class="on"><span class="ni">🏠</span>Home</button>
+    <button data-v="stats"><span class="ni">📊</span>Progress</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   유기화학 듀오 — self-contained PWA
+   학습이론: 간격반복(SM-2) · 능동회상 · 정교화(Why) · 인터리빙 · 예습
+   ============================================================ */
+
+// ---------- CARD DATA (McMurry 9판 기반 큐레이션) ----------
+// stage: 'learned' = 세션서 이미 학습(복습 대상) / 'preview' = 다음 절 예습
+const CARDS = [
+  // ===== Ch.1 Bonding & Hybridization =====
+  {id:"c1-01",ch:"Ch.1",st:"learned",topic:"σ bond",q:"Why can a single (σ) bond rotate freely?",a:"A σ bond is cylindrically symmetric about the bond axis, so rotating around it doesn't change the orbital overlap → no energy change → free rotation."},
+  {id:"c1-02",ch:"Ch.1",st:"learned",topic:"π bond",q:"Why can't a C=C double bond rotate? (in terms of symmetry)",a:"The π bond is side-on overlap of two lobes (above and below). Rotating would pull those lobes apart and break the bond → no rotation."},
+  {id:"c1-03",ch:"Ch.1",st:"learned",topic:"hybrid count",q:"What sets the number of hybrid orbitals on an atom?",a:"Number of hybrid orbitals = number of (bonds + lone pairs) domains. The 'a 2s electron gets promoted' story is just bookkeeping."},
+  {id:"c1-04",ch:"Ch.1",st:"learned",topic:"superscript",q:"What does the superscript in sp³/sp²/sp mean? (common trap)",a:"The number of p orbitals mixed in — sp³ = 3 p's, sp² = 2, sp = 1. It is NOT a count of electrons."},
+  {id:"c1-05",ch:"Ch.1",st:"learned",topic:"geometry",q:"Bond angle and geometry for sp³ / sp² / sp?",a:"sp³ → 109.5° tetrahedral / sp² → 120° trigonal planar / sp → 180° linear."},
+  {id:"c1-06",ch:"Ch.1",st:"learned",topic:"ground-state paradox",q:"Why can't ground-state 2s²2p² explain CH₄? (two contradictions)",a:"① 2s² is full (Pauli), so only the two p electrons could bond = 2 bonds — but CH₄ has 4. ② Even if 4 formed, 2s and 2p aren't equivalent and p–p angles are ~90°, yet real CH₄ is all-equivalent at 109.5°. → hybridization is needed."},
+  {id:"c1-07",ch:"Ch.1",st:"learned",topic:"C≡C",q:"What makes up a triple bond (C≡C)? (σ/π count)",a:"1 σ (sp–sp, head-on) + 2 π (p–p, side-on ×2). The two π bonds are perpendicular to each other."},
+  {id:"c1-08",ch:"Ch.1",st:"learned",topic:"MO count",q:"Combine N atomic orbitals → how many MOs, and how do they split?",a:"N MOs (count is conserved). Same-sign addition → lower-energy bonding MO. Opposite-sign → higher-energy antibonding MO (with a node between the nuclei)."},
+  {id:"c1-09",ch:"Ch.1",st:"learned",topic:"bonding vs antibonding MO",q:"Key difference between a bonding and an antibonding MO?",a:"Bonding MO: no node between the nuclei, electron density builds up between them. Antibonding MO: a node between the nuclei, the region between is empty → contributes nothing to bonding."},
+  {id:"c1-10",ch:"Ch.1",st:"learned",topic:"sp² C vs B",q:"Why does an sp² carbon have a π bond but sp² boron (BF₃) doesn't?",a:"Carbon keeps 1 of its 4 valence electrons in the leftover p orbital → π. Boron spends all 3 valence electrons on bonds, leaving that p empty → no π = an empty-orbital Lewis acid."},
+  {id:"c1-11",ch:"Ch.1",st:"learned",topic:"skeletal",q:"The four rules for skeletal structures?",a:"① every vertex and endpoint is a C ② H's on C are implied (enough to complete the octet) ③ atoms other than C (N, O, S…) are drawn ④ H's on N/O are drawn."},
+  {id:"c1-12",ch:"Ch.1",st:"learned",topic:"why omit H",q:"Skeletal drawings omit H on C but show H on N/O — why?",a:"Carbon almost always has 4 bonds, so its H count is automatic. For N/O the bond count varies and changes the acid/base/ionic state, so that information matters → it's shown."},
+
+  // ===== Ch.2 극성·산염기·공명 =====
+  {id:"c2-01",ch:"Ch.2",st:"learned",topic:"ΔEN 기준",q:"ΔEN 정량 기준 (비극성 / 극성공유 / 이온성)은?",a:"<0.5 비극성 · 0.5~2 극성 공유 · >2 이온성."},
+  {id:"c2-02",ch:"Ch.2",st:"learned",topic:"이례적 δ",q:"H₃C–MgBr 에서 탄소의 부분전하는? 왜?",a:"δ⁻. Mg가 C보다 EN이 낮아 전자가 C 쪽으로. (탄소가 음성인 드문 경우)"},
+  {id:"c2-03",ch:"Ch.2",st:"learned",topic:"μ",q:"쌍극자모멘트 식·단위는?",a:"μ = Q × r. 단위 Debye(D), 1 D = 3.336×10⁻³⁰ C·m."},
+  {id:"c2-04",ch:"Ch.2",st:"learned",topic:"NH₃ vs NF₃",q:"NH₃가 NF₃보다 μ가 큰 이유는? (EN차만 보면 틀림)",a:"NH₃는 lone pair 방향과 결합 쌍극자가 같은 방향(보강). NF₃는 반대(상쇄)."},
+  {id:"c2-05",ch:"Ch.2",st:"learned",topic:"형식전하",q:"형식전하 식과 그 의미는?",a:"FC = 원자가전자 − (결합전자÷2) − 비공유전자. 실제 이온화 ✗, bookkeeping. 모든 FC 합 = 총 전하."},
+  {id:"c2-06",ch:"Ch.2",st:"learned",topic:"공명 실재",q:"공명 구조는 실재하는가?",a:"아니다. 종이 위 표기 장치. 실재는 hybrid 하나뿐. 두 구조를 진동하며 오가는 것 ✗ (acetate 두 C–O 다 127 pm)."},
+  {id:"c2-07",ch:"Ch.2",st:"learned",topic:"공명 조건",q:"공명이 성립할 조건은?",a:"다중결합 + 옆 원자의 p오비탈(빈자리/홀전자/lone pair). 전부 단일결합·채워진 옥텟이면 공명 ✗."},
+  {id:"c2-08",ch:"Ch.2",st:"learned",topic:"공명 안정성",q:"공명이 많으면 왜 안정한가?",a:"전자 비편재화 → ① 전자–전자 반발↓ ② 더 많은 핵의 인력 → 에너지↓. 등가 공명 多 → 완전 균등 비편재화 = 최고 안정."},
+  {id:"c2-09",ch:"Ch.2",st:"learned",topic:"브뢴스테드",q:"브뢴스테드 산·염기 정의와 켤레쌍 관계는?",a:"산=H⁺ 줌 / 염기=H⁺ 받음. 켤레쌍 = H⁺ 하나 차이, 전하 ±1."},
+  {id:"c2-10",ch:"Ch.2",st:"learned",topic:"pKa",q:"pKa의 정의·해석과 강산-짝염기 관계는?",a:"pKa = −log Ka, 작을수록 강산(1 차이 = 10배). 산세기 ↔ 짝염기세기는 반비례(시소)."},
+  {id:"c2-11",ch:"Ch.2",st:"learned",topic:"반응 방향",q:"산·염기 반응의 정방향 조건은?",a:"반응물 산 pKa < 생성물 짝산 pKa (반응물이 더 센 산). 평형은 더 약한·안정한 쪽으로."},
+  {id:"c2-12",ch:"Ch.2",st:"learned",topic:"Lewis",q:"Lewis 산·염기 정의가 브뢴스테드보다 넓은 이유는?",a:"산=전자쌍 받음 / 염기=lone pair 줌. 산의 'H⁺ 보유' 제약을 풀어 BF₃·금속양이온까지 포함. Lewis 산 반응 = adduct(잃지 않고 결합 추가)."},
+  {id:"c2-13",ch:"Ch.2",st:"learned",topic:"수소결합",q:"수소결합이 유독 강한 이유 2가지는?",a:"① O·N 큰 EN → O/N–H 강분극(큰 δ+) ② H가 작고 inner shell 없어 lone pair에 바짝 접근. 조건 = δ+H(O/N) + 받는 lone pair(O/N)."},
+  {id:"c2-14",ch:"Ch.2",st:"learned",topic:"분산력",q:"분산력이 무극성 분자에도 작용하는 이유는?",a:"순간 전자 쏠림 → 순간 쌍극자 → 이웃에 반대 쌍극자 유도 → 누적 인력. (van der Waals 3종: 쌍극자–쌍극자/분산력/수소결합)"},
+
+  // ===== Ch.3 Functional Groups, Alkanes, Conformations =====
+  {id:"c3-01",ch:"Ch.3",st:"learned",topic:"functional group families",q:"The three families of functional groups (McMurry Table 3-1)?",a:"① C–C multiple bonds (π: alkenes, alkynes, arenes) ② C single-bonded to an electronegative atom (halides, alcohols, ethers, amines, thiols…) ③ C=O carbonyl (aldehydes, ketones, carboxylic acids, esters, amides…). Common thread: an electron imbalance is the reactive site."},
+  {id:"c3-02",ch:"Ch.3",st:"learned",topic:"alkane inertness",q:"Why are alkanes unreactive?",a:"No functional group — C–H has almost no EN difference, so there's no δ±, no π, no lone pair → simply no site to attack."},
+  {id:"c3-03",ch:"Ch.3",st:"learned",topic:"boiling point",q:"Why does an alkane's boiling point rise with molecular weight?",a:"Dispersion forces. Larger molecules have more electrons and a softer (more polarizable) electron cloud → bigger instantaneous dipoles → stronger intermolecular attraction."},
+  {id:"c3-04",ch:"Ch.3",st:"learned",topic:"branching",q:"Same formula — why does more branching lower the boiling point?",a:"Isomers share the same electron count. More branching → more spherical → less surface contact → smaller total dispersion force. (A straight chain touches along its whole side.)"},
+  {id:"c3-05",ch:"Ch.3",st:"learned",topic:"degree of C",q:"How do you classify a carbon as 1°/2°/3°/4°?",a:"By the number of OTHER carbons attached to it. A 4° carbon is packed with 4 carbons, so it carries no H (no quaternary H)."},
+  {id:"c3-06",ch:"Ch.3",st:"learned",topic:"IUPAC",q:"The four parts of an IUPAC name, and the numbering rule?",a:"prefix (substituents)–parent (longest chain)–locant (position)–suffix (main group). Number for the lowest locants at the first point of difference, not alphabetically. Use di/tri multiplying prefixes."},
+  {id:"c3-07",ch:"Ch.3",st:"learned",topic:"C–C rotation",q:"Why can ethane's C–C bond rotate?",a:"The σ bond is cylindrically symmetric (circular cross-section), so overlap is preserved through rotation → it turns without breaking."},
+  {id:"c3-08",ch:"Ch.3",st:"learned",topic:"staggered/eclipsed",q:"Staggered vs eclipsed — stability and ratio?",a:"Staggered = most stable / eclipsed = least stable. At any instant it's roughly 99% staggered : 1% eclipsed."},
+  {id:"c3-09",ch:"Ch.3",st:"learned",topic:"★ torsional strain",q:"The real cause of torsional strain in ethane? (McMurry 9e — not the repulsion story)",a:"NOT H–H repulsion. It's the interaction between a C–H bonding orbital on one carbon and the C–H antibonding (σ*) orbital on the next (hyperconjugation), which STABILIZES the staggered form. Frame it as 'staggered is stabilized by orbital alignment,' not 'eclipsed is destabilized by repulsion.'"},
+  {id:"c3-10",ch:"Ch.3",st:"learned",topic:"★ σ* orbital",q:"What is an antibonding σ* orbital? (three key points)",a:"Not a different location from σ — it's the SAME bond combined out of phase (same position, opposite phase). There is a node between (zero electrons), and the big lobe is on the backside. To accept density the donor σ must be anti (180°), aimed at that backside. (Links to SN2 backside attack.)"},
+  {id:"c3-11",ch:"Ch.3",st:"learned",topic:"dihedral angle",q:"What is the dihedral angle?",a:"The angle between a front and a back C–H. It cycles between 0° (maximum eclipse) and 60° (minimum, staggered)."},
+  {id:"c3-12",ch:"Ch.3",st:"learned",topic:"12 kJ/mol",q:"Break down ethane's 12 kJ/mol eclipsing energy.",a:"= torsional strain. Three eclipsing H–H pairs × 4.0 kJ/mol."},
+
+  // ===== Ch.3-7 예습 (다음 세션 Day 26) =====
+  {id:"p37-01",ch:"Ch.3-7",st:"preview",topic:"anti 형태",q:"[예습] 뷰테인에서 가장 안정한 형태의 이름은?",a:"anti conformation. 두 메틸기가 180°로 최대한 멀리 떨어진 배치(0 kJ/mol 기준)."},
+  {id:"p37-02",ch:"Ch.3-7",st:"preview",topic:"gauche 형태",q:"[예습] gauche 형태는 왜 anti보다 3.8 kJ/mol 높은가?",a:"메틸기끼리 60°로 가까워 steric strain(입체 변형) 발생. 가려짐(eclipse)이 없는데도 에너지가 높은 이유."},
+  {id:"p37-03",ch:"Ch.3-7",st:"preview",topic:"steric strain",q:"[예습] steric strain(입체 변형)의 정의는?",a:"원자들이 원자 반지름이 허용하는 것보다 더 가까이 밀릴 때 생기는 반발. 두 원자를 같은 공간에 억지로 넣으려는 결과. (↔ torsional strain은 오비탈 정렬 문제)"},
+  {id:"p37-04",ch:"Ch.3-7",st:"preview",topic:"상호작용 에너지",q:"[예습] 알케인 형태 상호작용 에너지 4종(kJ/mol)은?",a:"H↔H 가려짐 4.0 / H↔CH₃ 가려짐 6.0 / CH₃↔CH₃ 가려짐 11.0 / CH₃↔CH₃ gauche 3.8. (표 3-5)"}
+];
+
+// ---------- STORAGE ----------
+const LS = "orgchem_duo_v1";
+// 로컬(한국) 날짜 문자열 — toISOString()은 UTC라 KST에서 하루 밀림
+const fmtDate = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const todayStr = () => fmtDate(new Date());
+const daysBetween = (a,b) => Math.round((new Date(b)-new Date(a))/86400000);
+
+function load(){
+  try{ return JSON.parse(localStorage.getItem(LS)) || {}; }catch(e){ return {}; }
+}
+function save(){ localStorage.setItem(LS, JSON.stringify(state)); }
+
+let state = load();
+if(!state.cards) state.cards = {};      // id -> {ef, interval, reps, due, seen}
+if(!state.streak) state.streak = {count:0, last:null};
+if(state.goal==null) state.goal = 15;
+if(!state.dayDone) state.dayDone = {};  // date -> count
+if(!state.extraCards) state.extraCards = [];  // 세션에서 가져온 새 카드
+if(!state.overrides) state.overrides = {};    // {id:{st?, weak?}} 내장카드 상태 변경
+
+// --- 저장된 동기화 결과를 CARDS 에 병합 (진도/약점 유지) ---
+(function mergeStored(){
+  (state.extraCards||[]).forEach(function(ec){
+    if(ec && ec.id && !CARDS.find(function(c){return c.id===ec.id;})) CARDS.push(ec);
+  });
+  Object.keys(state.overrides||{}).forEach(function(id){
+    var ov = state.overrides[id], c = CARDS.find(function(x){return x.id===id;});
+    if(c){ if(ov.st) c.st = ov.st; if("weak" in ov) c.weak = ov.weak; }
+  });
+})();
+
+// ---------- SM-2 ----------
+function grade(id, g){ // g: 0 again, 3 hard, 4 good, 5 easy
+  const t = todayStr();
+  let c = state.cards[id] || {ef:2.5, interval:0, reps:0, due:t, seen:0};
+  c.seen = (c.seen||0)+1;
+  if(g < 3){ c.reps = 0; c.interval = 0; }      // 다시 → 이번 세션 재삽입, 내일 due
+  else {
+    c.ef = Math.max(1.3, c.ef + (0.1 - (5-g)*(0.08 + (5-g)*0.02)));
+    c.reps += 1;
+    if(c.reps === 1) c.interval = (g===5?3:1);
+    else if(c.reps === 2) c.interval = (g===5?8:6);
+    else c.interval = Math.round(c.interval * c.ef * (g===3?0.7:1));
+    if(c.interval < 1) c.interval = 1;
+  }
+  const due = new Date(); due.setDate(due.getDate() + (c.interval||1));
+  c.due = fmtDate(due);
+  state.cards[id] = c;
+  // 약점 자동 추적: '다시' = 약점 지정 / '좋음·쉬움' = 해제
+  const cardObj = CARDS.find(x=>x.id===id);
+  if(cardObj){
+    if(g < 3){ cardObj.weak = true; state.overrides[id] = Object.assign({}, state.overrides[id], {weak:true}); }
+    else if(g >= 4 && cardObj.weak){ cardObj.weak = false; state.overrides[id] = Object.assign({}, state.overrides[id], {weak:false}); }
+  }
+  // 오늘 진행 + 스트릭
+  state.dayDone[t] = (state.dayDone[t]||0) + 1;
+  bumpStreak(t);
+  save();
+}
+function bumpStreak(t){
+  const s = state.streak;
+  if(s.last === t) return;
+  if(s.last && daysBetween(s.last, t) === 1) s.count += 1;
+  else s.count = 1;
+  s.last = t;
+}
+
+// ---------- QUEUE BUILDERS ----------
+function dueReviewCards(){
+  const t = todayStr();
+  return CARDS.filter(c => c.st==="learned").filter(c=>{
+    if(c.weak) return true;             // 🔴 약점 카드 = 항상 도래(최우선)
+    const p = state.cards[c.id];
+    if(!p) return true;                 // 아직 안 본 카드 = 즉시 후보(new)
+    return p.due <= t;                  // 복습 도래
+  });
+}
+function reviewCount(){ return dueReviewCards().length; }
+
+const NEW_PER_SESSION = 12;              // 한 세션에 처음 보는 카드 최대치
+function splitDue(){
+  const cards = dueReviewCards();
+  return {
+    weak : cards.filter(c=>c.weak),                                  // 🔴 약점
+    again: cards.filter(c=>!c.weak && state.cards[c.id]),             // 복습할 때가 된 카드
+    fresh: cards.filter(c=>!c.weak && !state.cards[c.id])             // 아직 한 번도 안 본 카드
+  };
+}
+function buildReviewQueue(){
+  const d = splitDue();
+  interleave(d.again); interleave(d.fresh);   // 인터리빙(챕터 섞기)
+  // 약점·복습 도래분은 전부, 처음 보는 카드는 한 세션에 12장까지
+  return d.weak.concat(d.again, d.fresh.slice(0, NEW_PER_SESSION));
+}
+function buildPreviewQueue(){
+  let q = CARDS.filter(c=>c.st==="preview").slice();
+  return q;
+}
+function interleave(arr){ // 같은 챕터 연속 최소화(가벼운 셔플)
+  arr.sort(()=> Math.random()-0.5);
+  return arr;
+}
+
+// ---------- RENDER: HOME ----------
+const $ = s => document.querySelector(s);
+function renderHome(){
+  const t = todayStr();
+  const done = state.dayDone[t]||0;
+  $("#t-streak").textContent = state.streak.count||0;
+  $("#g-done").textContent = done;
+  $("#g-goal").textContent = state.goal;
+  $("#g-fill").style.width = Math.min(100, (done/state.goal)*100) + "%";
+  const tq = buildTodayQueue();
+  const nQuiz = tq.filter(isQuiz).length, nCard = tq.length - nQuiz;
+  $("#rv-count").textContent = tq.length;
+  const sub = $("#home-sub");
+  if(done >= state.goal) sub.textContent = "Goal hit for today 🎉 Your streak is safe.";
+  else if(state.streak.count>0) sub.textContent = "🔥 "+state.streak.count+" days running — keep it going.";
+  else sub.textContent = "Ready for today's round?";
+  const leftover = Math.max(0, splitDue().fresh.length - NEW_PER_SESSION);
+  $("#g-msg").textContent = tq.length
+     ? nCard+" flashcards + "+nQuiz+" quiz questions this round"+(leftover? " ("+leftover+" new cards saved for later)" : "")
+     : "You're all caught up — try a preview of the next section.";
+  $("#sync-when").textContent = state.lastSync ? ("last synced " + state.lastSync) : "never synced";
+  renderChapters($("#ch-list"), false);
+  // mastery
+  const learned = CARDS.filter(c=>c.st==="learned");
+  const seen = learned.filter(c=>state.cards[c.id]).length;
+  $("#mastery-chip").textContent = Math.round((seen/learned.length)*100)+"% seen";
+  // btn disable
+  $("#btn-today").toggleAttribute("disabled", buildTodayQueue().length===0);
+}
+function renderChapters(el, withStars){
+  const chs = [...new Set(CARDS.filter(c=>c.st==="learned").map(c=>c.ch))];
+  el.innerHTML = "";
+  const starCh = {"Ch.5":1,"Ch.6":1,"Ch.11":1,"Ch.19":1};
+  chs.forEach(ch=>{
+    const list = CARDS.filter(c=>c.ch===ch && c.st==="learned");
+    let studied=0;
+    list.forEach(c=>{ if(state.cards[c.id]) studied++; });
+    const pct = Math.round((studied/list.length)*100);    // 바 = 라벨(studied/total)과 동일하게
+    const row = document.createElement("div");
+    row.className="chrow";
+    row.innerHTML = `<span class="nm">${ch}${starCh[ch]?' <span class="star">⭐</span>':''}</span>
+      <span class="mini"><i style="width:${pct}%"></i></span>
+      <span class="cnt">${studied}/${list.length}</span>`;
+    el.appendChild(row);
+  });
+}
+
+// ---------- RENDER: SESSION ----------
+let queue=[], qIndex=0, sessMode="Today", sessTotal=0, quizRight=0, quizTotal=0;
+function startSession(mode){
+  sessMode = mode;
+  queue = (mode==="Preview") ? buildPreviewQueue() : buildTodayQueue();
+  if(queue.length===0){ alert(mode==="Preview"?"No preview cards available.":"Nothing to study right now."); return; }
+  qIndex = 0; sessTotal = queue.length; quizRight = 0; quizTotal = 0;
+  QUIZ.forEach(q=>{ q._retried = false; });
+  $("#s-mode").textContent = mode;
+  show("sess");
+  renderCard();
+}
+function renderCard(){
+  const body=$("#fc-body"), ctrl=$("#fc-controls");
+  if(qIndex >= queue.length){ return renderDone(); }
+  $("#s-prog").style.width = Math.min(100,(qIndex/Math.max(1,queue.length))*100)+"%";
+  const c = queue[qIndex];
+  if(isQuiz(c)) return renderQuizItem(c);      // 퀴즈 문항이면 객관식으로
+  const kind = /왜|이유|why|reason|cause|explain/i.test(c.q) ? "🧠 Explain the reasoning out loud" : "Answer it yourself first, then check";
+  body.innerHTML = `<div class="tag">${c.ch} · ${c.topic}${c.weak?' <span class="badge" style="background:var(--red);color:#fff">🔴 Weak</span>':''}</div>
+    <div class="qbox"><div class="q">${c.q}</div><div class="kind">${kind}</div></div>`;
+  ctrl.innerHTML = `<button class="btn" id="reveal">Show answer</button>`;
+  $("#reveal").onclick = ()=>revealCard(c);
+}
+function revealCard(c){
+  const body=$("#fc-body"), ctrl=$("#fc-controls");
+  const ans = document.createElement("div");
+  ans.className="abox"; ans.textContent = c.a;
+  body.appendChild(ans);
+  ans.scrollIntoView({behavior:"smooth", block:"nearest"});
+  if(sessMode!=="Preview"){
+    ctrl.innerHTML = `<div class="grade">
+      <button class="g-again" data-g="0">Again<small>couldn't recall</small></button>
+      <button class="g-hard" data-g="3">Hard<small>barely got it</small></button>
+      <button class="g-good" data-g="4">Good<small>remembered</small></button>
+      <button class="g-easy" data-g="5">Easy<small>instant</small></button>
+    </div>`;
+    ctrl.querySelectorAll("button").forEach(b=>{
+      b.onclick=()=>{
+        const g=+b.dataset.g;
+        grade(c.id, g);
+        if(g<3){ queue.push(c); }          // '다시' → 세션 끝에 재삽입
+        qIndex++; renderCard();
+      };
+    });
+  } else { // 예습 = 가벼운 2택
+    ctrl.innerHTML = `<div class="grade" style="grid-template-columns:1fr 1fr">
+      <button class="g-hard" data-g="new">New to me</button>
+      <button class="g-good" data-g="know">I think I get it</button>
+    </div>`;
+    ctrl.querySelectorAll("button").forEach(b=>{
+      b.onclick=()=>{ qIndex++; renderCard(); };
+    });
+  }
+}
+function renderDone(){
+  $("#s-prog").style.width = "100%";
+  const t=todayStr(); const done=state.dayDone[t]||0;
+  const isPrev = (sessMode==="Preview");
+  const hitGoal = done>=state.goal && !isPrev;
+  const quizLine = quizTotal ? (' · 🧩 quiz '+quizRight+'/'+quizTotal) : '';
+  $("#fc-body").innerHTML = `<div class="done">
+     <div class="big">${hitGoal?'🏆':'✅'}</div>
+     <h2>${isPrev?'Preview done':'Session complete'}</h2>
+     <p class="muted">${isPrev? "You'll cover these with Claude next session." : (hitGoal? done+' items today':done+' of '+state.goal+' today')+quizLine+' · 🔥 '+state.streak.count+'-day streak'}</p>
+     ${hitGoal?'<p style="color:var(--green);font-weight:800;margin-top:8px">Daily goal reached — streak is safe!</p>':''}
+   </div>`;
+  $("#fc-controls").innerHTML = `<button class="btn" id="fin">Back home</button>`;
+  $("#fin").onclick = ()=>{ show("home"); renderHome(); };
+}
+
+// ---------- RENDER: STATS ----------
+function renderStats(){
+  const t=todayStr();
+  const learned = CARDS.filter(c=>c.st==="learned");
+  $("#st-streak").textContent = state.streak.count||0;
+  $("#st-seen").textContent = learned.filter(c=>state.cards[c.id]).length;
+  $("#st-total").textContent = learned.length;
+  $("#st-due").textContent = reviewCount();
+  $("#st-mature").textContent = learned.filter(c=>{const p=state.cards[c.id];return p&&p.interval>=21;}).length;
+  renderChapters($("#st-chlist"), true);
+}
+
+
+// ---------- QUIZ DATA (4지선다 · 눈으로 푸는 수준 · 자동채점) ----------
+const SV_NEWMAN_STAG = `<svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg" aria-label="Newman projection">
+  <line class="bond" x1="100" y1="145" x2="100" y2="188"/>
+  <line class="bond" x1="61" y1="77" x2="38" y2="58"/>
+  <line class="bond" x1="139" y1="77" x2="162" y2="58"/>
+  <circle class="atom" cx="100" cy="100" r="46"/>
+  <line class="bond" x1="100" y1="100" x2="100" y2="28"/>
+  <line class="bond" x1="100" y1="100" x2="38" y2="136"/>
+  <line class="bond" x1="100" y1="100" x2="162" y2="136"/>
+  <circle cx="100" cy="100" r="6" class="dot"/>
+</svg>`;
+const SV_HEXANE = `<svg viewBox="0 0 190 110" xmlns="http://www.w3.org/2000/svg" aria-label="skeletal chain">
+  <polyline class="bond" points="15,78 45,42 75,78 105,42 135,78 165,42"/>
+</svg>`;
+const QUIZ = [
+  {id:"q1", ch:"Ch.3", q:"이 뉴먼 투영식(Newman projection)이 나타내는 형태와 안정성은?", svg:SV_NEWMAN_STAG,
+   opts:["엇갈린형(staggered) — 가장 안정","엇갈린형(staggered) — 가장 불안정","가려진형(eclipsed) — 가장 안정","가려진형(eclipsed) — 가장 불안정"], a:0,
+   ex:"앞·뒤 결합이 60° 어긋나 겹치지 않음 = 엇갈린형. 오비탈 정렬로 안정화되어 가장 안정한 형태."},
+  {id:"q2", ch:"Ch.1", q:"What is the hybridization of each carbon in a C=C double bond?",
+   opts:["sp","sp²","sp³","sp³d"], a:1,
+   ex:"A doubly-bonded carbon has 3 σ domains → sp², leaving one p orbital to form the π bond."},
+  {id:"q3", ch:"Ch.3", q:"How many carbons are in this skeletal structure?", svg:SV_HEXANE,
+   opts:["5","6","7","8"], a:1,
+   ex:"Every vertex and endpoint is a carbon. Counting them gives 6 → hexane."},
+  {id:"q4", ch:"Ch.3", q:"분자식 C₅H₁₂ 이성질체 중 끓는점이 가장 높은 것은?",
+   opts:["곧은 사슬 (펜테인)","가지 하나 (아이소펜테인)","가지 둘 (네오펜테인)","셋 다 같다"], a:0,
+   ex:"전자 수는 같지만 곧은 사슬이 접촉 면적이 가장 커 분산력이 최대 → 끓는점 최고. 가지가 많을수록 공 모양이라 접촉↓."},
+  {id:"q5", ch:"Ch.3", q:"A C=O carbon that also carries an –OH belongs to which functional group?",
+   opts:["Ketone","Aldehyde","Carboxylic acid","Ester"], a:2,
+   ex:"C=O plus –OH on the same carbon is the carboxyl group → carboxylic acid."},
+  {id:"q6", ch:"Ch.3", q:"Which conformation of butane is the LEAST stable (highest energy)?",
+   opts:["Anti","Gauche","Eclipsed, with the two CH₃ groups aligned","Fully staggered"], a:2,
+   ex:"CH₃↔CH₃ eclipsing carries both torsional and steric strain (~19 kJ/mol) — the energy maximum."},
+  {id:"q7", ch:"Ch.1", q:"sp² 혼성 탄소의 이상적인 결합각은?",
+   opts:["90°","109.5°","120°","180°"], a:2,
+   ex:"sp²는 평면 삼각형(trigonal planar) → 120°. (sp³=109.5°, sp=180°)"},
+  {id:"q8", ch:"Ch.1", q:"How many π bonds are in a C≡C triple bond?",
+   opts:["0","1","2","3"], a:2,
+   ex:"A triple bond = 1 σ + 2 π, and the two π bonds sit perpendicular to each other."},
+  {id:"q9", ch:"Ch.2", q:"다음 중 Lewis 산(acid)은?",
+   opts:["BF₃","NH₃","OH⁻","H₂O"], a:0,
+   ex:"BF₃는 붕소에 빈 p 오비탈이 있어 전자쌍을 받음 = Lewis 산. 나머지는 lone pair를 주는 염기."},
+  {id:"q10", ch:"Ch.2", q:"Which is the strongest acid (lowest pKa)?",
+   opts:["Acetic acid (pKa 4.76)","Methanol (15.5)","Acetone (19.3)","Ethane (~50)"], a:0,
+   ex:"Lower pKa = stronger acid. Acetic acid wins at 4.76 — its conjugate base is resonance-stabilized over two oxygens."},
+  {id:"q11", ch:"Ch.3", q:"(CH₃)₃CH 에서 가운데 탄소는 몇 차 탄소인가?",
+   opts:["1차 (1°)","2차 (2°)","3차 (3°)","4차 (4°)"], a:2,
+   ex:"가운데 탄소에 다른 탄소가 3개 붙음 → 3차(3°) 탄소. 남은 결합에 H 1개."},
+  {id:"q12", ch:"Ch.3", q:"When numbering an IUPAC chain, you pick the direction that gives substituents…",
+   opts:["the lowest locants","the highest locants","alphabetical order","the longest branch"], a:0,
+   ex:"Number for the lowest set of locants at the first point of difference. Alphabetical order only breaks ties when writing the name, not when numbering."}
+];
+
+// ---------- TODAY'S SESSION (복습 카드 + 퀴즈 혼합) ----------
+function buildTodayQueue(){
+  const cards = buildReviewQueue();
+  const pool = QUIZ.slice(); interleave(pool);
+  const nQuiz = cards.length
+      ? Math.min(pool.length, Math.max(3, Math.round(cards.length/3)))
+      : Math.min(pool.length, 8);
+  const picked = pool.slice(0, nQuiz);
+  const weak  = cards.filter(c=>c.weak);
+  const mixed = cards.filter(c=>!c.weak).concat(picked);
+  interleave(mixed);
+  return weak.concat(mixed);      // 🔴약점 먼저 → 나머지 카드·퀴즈 섞어서
+}
+function isQuiz(x){ return !!x && Array.isArray(x.opts); }
+function renderQuizItem(q){
+  const body=$("#fc-body"), ctrl=$("#fc-controls");
+  body.innerHTML = `<div class="tag">${q.ch} · Quiz</div>
+    <div class="qbox" style="justify-content:flex-start">
+      <div class="q" style="font-size:18px">${q.q}</div>
+      ${q.svg?('<div class="qsvg">'+q.svg+'</div>'):''}
+    </div>`;
+  ctrl.innerHTML = `<div class="opts">`+
+    q.opts.map((o,i)=>`<button class="opt" data-i="${i}"><b>${String.fromCharCode(65+i)}</b>  ${o}</button>`).join("")+
+    `</div>`;
+  ctrl.querySelectorAll(".opt").forEach(b=> b.onclick=()=>gradeQuizItem(+b.dataset.i, q));
+}
+function gradeQuizItem(pick, q){
+  const ctrl=$("#fc-controls");
+  ctrl.querySelectorAll(".opt").forEach((b,i)=>{
+    b.setAttribute("disabled","");
+    if(i===q.a) b.classList.add("correct");
+    else if(i===pick) b.classList.add("wrong");
+  });
+  const right = (pick===q.a);
+  quizTotal++; if(right) quizRight++;
+  const ex=document.createElement("div"); ex.className="abox";
+  ex.textContent = (right?"✅ Correct — ":"❌ Not quite — ")+q.ex;
+  $("#fc-body").appendChild(ex); ex.scrollIntoView({behavior:"smooth", block:"nearest"});
+  if(!right && !q._retried){ q._retried = true; queue.push(q); }   // 틀린 문제는 딱 한 번만 재출제
+  const t=todayStr(); state.dayDone[t]=(state.dayDone[t]||0)+1; bumpStreak(t); save();
+  const nx=document.createElement("button"); nx.className="btn"; nx.id="qnext";
+  nx.textContent = "Next";
+  nx.onclick=()=>{ qIndex++; renderCard(); };
+  ctrl.appendChild(nx);
+}
+
+// ---------- NAV / VIEWS ----------
+function show(v){
+  $("#view-home").classList.toggle("hidden", v!=="home");
+  $("#view-sess").classList.toggle("hidden", v!=="sess");
+  $("#view-stats").classList.toggle("hidden", v!=="stats");
+  $("#nav").classList.toggle("hidden", v==="sess");
+  document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on", b.dataset.v===v));
+  window.scrollTo(0,0);
+}
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{ const v=b.dataset.v; show(v); if(v==="home")renderHome(); if(v==="stats")renderStats(); };
+});
+$("#btn-today").onclick = ()=>startSession("Today");
+$("#btn-preview").onclick = ()=>startSession("Preview");
+$("#s-close").onclick = ()=>{ show("home"); renderHome(); };
+$("#btn-reset").onclick = ()=>{
+  if(confirm("Erase all progress and your streak? This can't be undone.")){
+    localStorage.removeItem(LS); state=load();
+    state.cards={}; state.streak={count:0,last:null}; state.goal=15; state.dayDone={};
+    save(); renderHome();
+  }
+};
+
+// ---------- SYNC: 앱 → 클로드 (내보내기) ----------
+function buildExport(){
+  const learned = CARDS.filter(c=>c.st==="learned");
+  return {
+    type:"orgchem-state", v:1, date: todayStr(),
+    streak: state.streak.count||0,
+    seen: learned.filter(c=>state.cards[c.id]).length, total: learned.length,
+    weak: CARDS.filter(c=>c.weak).map(c=>c.id),
+    due: dueReviewCards().map(c=>c.id),
+    mastered: learned.filter(c=>{const p=state.cards[c.id]; return p && p.interval>=21;}).map(c=>c.id)
+  };
+}
+// ---------- SYNC: 클로드 → 앱 (가져오기) ----------
+function applyImport(text){
+  let d;
+  try{ d = JSON.parse((text||"").trim()); }
+  catch(e){ return {ok:false, msg:"⚠️ Couldn't read that code. Make sure you pasted the whole thing."}; }
+  if(!d || d.type!=="orgchem-sync") return {ok:false, msg:"⚠️ That isn't an OrgChem update code."};
+  let added=0, weakN=0, promo=0, mast=0;
+  (d.addCards||[]).forEach(function(ec){
+    if(!ec || !ec.id || !ec.q) return;
+    if(!CARDS.find(c=>c.id===ec.id)){
+      ec.st = ec.st || "learned";
+      CARDS.push(ec); state.extraCards.push(ec); added++;
+    }
+  });
+  (d.promotePreview||[]).forEach(function(id){
+    const c = CARDS.find(x=>x.id===id);
+    if(c){ c.st="learned"; state.overrides[id]=Object.assign({},state.overrides[id],{st:"learned"}); promo++; }
+  });
+  (d.weak||[]).forEach(function(id){
+    const c = CARDS.find(x=>x.id===id);
+    if(c){
+      c.weak = true;
+      state.overrides[id] = Object.assign({}, state.overrides[id], {weak:true});
+      if(state.cards[id]) state.cards[id].due = todayStr();   // 즉시 복습 대상
+      weakN++;
+    }
+  });
+  (d.mastered||[]).forEach(function(id){
+    const c = CARDS.find(x=>x.id===id);
+    if(c){
+      c.weak = false;
+      state.overrides[id] = Object.assign({}, state.overrides[id], {weak:false});
+      const p = state.cards[id] || {ef:2.5, reps:2, seen:1};
+      p.interval = Math.max(p.interval||0, 14);
+      const nd = new Date(); nd.setDate(nd.getDate()+p.interval);
+      p.due = fmtDate(nd);
+      state.cards[id] = p;
+      mast++;
+    }
+  });
+  state.lastSync = todayStr() + (d.session? (" · "+d.session) : "");
+  save();
+  return {ok:true, msg:"✅ Synced — "+added+" new cards · "+weakN+" marked weak · "+promo+" moved to review · "+mast+" mastered"};
+}
+async function copyText(t){
+  try{ await navigator.clipboard.writeText(t); return true; }catch(e){ return false; }
+}
+$("#btn-export").onclick = async ()=>{
+  const code = JSON.stringify(buildExport());
+  const ta = $("#sync-io");
+  ta.classList.remove("hidden"); ta.value = code;
+  $("#btn-apply").classList.add("hidden");
+  ta.focus(); ta.setSelectionRange(0, code.length);
+  const done = await copyText(code);
+  $("#sync-msg").textContent = done
+    ? "Copied. Paste it to Claude and it'll drill your weak cards first."
+    : "Press and hold the code below to select and copy it, then paste it to Claude.";
+};
+$("#btn-import").onclick = ()=>{
+  const ta = $("#sync-io");
+  ta.classList.remove("hidden"); ta.value = "";
+  ta.placeholder = "Paste the update code Claude gave you";
+  $("#btn-apply").classList.remove("hidden");
+  $("#sync-msg").textContent = "Paste the code, then tap Apply.";
+  ta.focus();
+};
+$("#btn-apply").onclick = ()=>{
+  const r = applyImport($("#sync-io").value);
+  $("#sync-msg").textContent = r.msg;
+  if(r.ok){
+    $("#sync-io").value=""; $("#sync-io").classList.add("hidden");
+    $("#btn-apply").classList.add("hidden");
+    renderHome();
+  }
+};
+
+// ---------- INIT ----------
+renderHome();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script>
+</body>
+</html>
