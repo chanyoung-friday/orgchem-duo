@@ -319,7 +319,7 @@ if(!state.appliedSyncs) state.appliedSyncs = []; // one-tap 링크 중복 적용
   });
   Object.keys(state.overrides||{}).forEach(function(id){
     var ov = state.overrides[id], c = CARDS.find(function(x){return x.id===id;});
-    if(c){ if(ov.st) c.st = ov.st; if("weak" in ov) c.weak = ov.weak; }
+    if(c){ if(ov.st) c.st = ov.st; if("weak" in ov) c.weak = ov.weak; if(ov.ch) c.ch = ov.ch; }
   });
 })();
 
@@ -732,7 +732,10 @@ $("#btn-reset").onclick = ()=>{
   if(confirm("Erase all progress and your streak? This can't be undone.")){
     localStorage.removeItem(LS); state=load();
     state.cards={}; state.streak={count:0,last:null}; state.goal=15; state.dayDone={};
-    save(); renderHome();
+    state.extraCards=[]; state.overrides={}; state.appliedSyncs=[];
+    save();
+    try{ location.reload(); }catch(e){}
+    renderHome();
   }
 };
 
@@ -765,6 +768,9 @@ function applyImport(text){
   try{ d = JSON.parse(extractSyncJSON(text)); }
   catch(e){ return {ok:false, msg:"⚠️ Couldn't read that code/link. Make sure you pasted the whole thing."}; }
   if(!d || d.type!=="orgchem-sync") return {ok:false, msg:"⚠️ That isn't an OrgChem update code."};
+  if(!state.appliedSyncs) state.appliedSyncs = [];
+  const sid = d.sid || ("h"+strHash(JSON.stringify(d)));
+  if(state.appliedSyncs.indexOf(sid) >= 0) return {ok:true, already:true, msg:"\u2713 Already applied \u2014 you're up to date."};
   let added=0, weakN=0, promo=0, mast=0;
   (d.addCards||[]).forEach(function(ec){
     if(!ec || !ec.id || !ec.q) return;
@@ -775,7 +781,8 @@ function applyImport(text){
   });
   (d.promotePreview||[]).forEach(function(id){
     const c = CARDS.find(x=>x.id===id);
-    if(c){ c.st="learned"; state.overrides[id]=Object.assign({},state.overrides[id],{st:"learned"}); promo++; }
+    if(c){ c.st="learned"; const base=(String(c.ch).match(/^Ch\.\d+/)||[c.ch])[0]; c.ch=base;
+      state.overrides[id]=Object.assign({},state.overrides[id],{st:"learned",ch:base}); promo++; }
   });
   (d.weak||[]).forEach(function(id){
     const c = CARDS.find(x=>x.id===id);
@@ -800,6 +807,7 @@ function applyImport(text){
     }
   });
   state.lastSync = todayStr() + (d.session? (" · "+d.session) : "");
+  if(state.appliedSyncs.indexOf(sid) < 0) state.appliedSyncs.push(sid);
   save();
   return {ok:true, msg:"✅ Synced — "+added+" new cards · "+weakN+" marked weak · "+promo+" moved to review · "+mast+" mastered"};
 }
@@ -853,17 +861,36 @@ function flashSync(msg){
     if(!raw) return;
     var json=b64urlToStr(raw); var d=JSON.parse(json);
     if(!d || d.type!=="orgchem-sync"){ cleanUrl(); return; }
-    if(!state.appliedSyncs) state.appliedSyncs=[];
-    var sid = d.sid || ("h"+strHash(json));
-    if(state.appliedSyncs.indexOf(sid) >= 0){ cleanUrl(); flashSync("✓ 이미 적용된 동기화예요."); return; }
     var r=applyImport(json);
-    if(r.ok){ state.appliedSyncs.push(sid); save(); }
     cleanUrl(); flashSync(r.msg);
   }catch(e){ /* 링크 파싱 실패 시 조용히 무시 */ }
 })();
 
+
+// ---------- auto-pull: apply pending updates from server sync.json ----------
+function autoPull(){
+  if(typeof fetch !== "function") return;
+  try{
+    fetch("sync.json?t="+Date.now(), {cache:"no-store"})
+      .then(function(r){ return (r && r.ok) ? r.json() : null; })
+      .then(function(list){
+        if(!list) return;
+        if(!Array.isArray(list)) list = [list];
+        var applied = 0, lastMsg = "";
+        list.forEach(function(d){
+          if(!d || d.type!=="orgchem-sync") return;
+          var res = applyImport(JSON.stringify(d));
+          if(res.ok && !res.already){ applied++; lastMsg = res.msg; }
+        });
+        if(applied){ renderHome(); flashSync("\u2601\ufe0f Auto-synced" + (applied>1 ? " ("+applied+" updates)" : "") + " \u2014 " + lastMsg.replace(/^\u2705 Synced \u2014 /, "")); }
+      })
+      .catch(function(){});
+  }catch(e){}
+}
+
 // ---------- INIT ----------
 renderHome();
+autoPull();
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script>
 </body>

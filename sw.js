@@ -1,4 +1,4 @@
-const CACHE = "orgchem-v2";
+const CACHE = "orgchem-v3";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
@@ -8,11 +8,18 @@ self.addEventListener("activate", e => {
 });
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
+  const isSync = e.request.url.indexOf("sync.json") >= 0;
   e.respondWith(
     fetch(e.request).then(r => {
-      const copy = r.clone();
-      caches.open(CACHE).then(c => c.put(e.request, copy)).catch(()=>{});
+      if (!isSync) {
+        const copy = r.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
+      }
       return r;
-    }).catch(() => caches.match(e.request).then(m => m || caches.match("./index.html")))
+    }).catch(() =>
+      isSync
+        ? new Response("[]", { headers: { "Content-Type": "application/json" } })
+        : caches.match(e.request).then(m => m || caches.match("./index.html"))
+    )
   );
 });
