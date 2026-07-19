@@ -70,13 +70,18 @@
   .chrow .cnt{font-size:12px; color:var(--muted); width:44px; text-align:right}
   .star{color:var(--amber)}
   /* ---- Session / flashcard ---- */
-  .sess{flex:1; display:flex; flex-direction:column}
+  .sess{flex:1; min-height:0; display:flex; flex-direction:column}
   .sessbar{display:flex; align-items:center; gap:12px; padding:12px 18px}
   .close{font-size:26px; color:var(--muted); background:none; border:none; cursor:pointer; line-height:1; font-weight:400}
   .prog{flex:1; height:14px; background:var(--line); border-radius:99px; overflow:hidden}
   .prog>i{display:block; height:100%; background:var(--green); border-radius:99px; transition:width .35s}
-  .fc{flex:1; display:flex; flex-direction:column; padding:8px 18px 0}
-  .fc:has(.qbox.quiz){flex:0 0 auto}
+  .fc{flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch;
+      display:flex; flex-direction:column; padding:8px 18px 0}
+  #fc-controls{flex:0 0 auto}
+  /* ---- 세션 중 페이지 스크롤 완전 잠금 (듀오링고식 고정 화면) ---- */
+  body.in-session{height:100vh; height:100dvh; overflow:hidden; touch-action:none}
+  body.in-session #app{height:100%; min-height:0}
+  body.in-session .fc{touch-action:pan-y}
   .fc .tag{font-size:12px; font-weight:800; color:var(--purple); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px}
   .fc .qbox{flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center; min-height:180px}
   .fc .q{font-size:21px; font-weight:800; line-height:1.45}
@@ -119,6 +124,7 @@
   .qsvg svg{width:150px; height:auto}
   /* 퀴즈: 한 화면에 들어오도록 위쪽 정렬 + 여백 축소 */
   .fc .qbox.quiz{justify-content:flex-start; min-height:0; flex:0 0 auto; text-align:left}
+  .fc .qbox{flex:0 0 auto}
   .fc .q.qq{font-size:17px; line-height:1.4}
   .qbox.quiz + *, .fc .qbox.quiz{margin-bottom:2px}
   .qsvg .bond{stroke:var(--text); stroke-width:3; fill:none; stroke-linecap:round}
@@ -711,6 +717,7 @@ function show(v){
   $("#view-sess").classList.toggle("hidden", v!=="sess");
   $("#view-stats").classList.toggle("hidden", v!=="stats");
   $("#nav").classList.toggle("hidden", v==="sess");
+  document.body.classList.toggle("in-session", v==="sess");   // 세션 중 스크롤 잠금
   document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on", b.dataset.v===v));
   window.scrollTo(0,0);
 }
