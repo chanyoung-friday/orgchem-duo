@@ -94,5 +94,79 @@
     "a": "결합의 겹침(eclipsing) 자체가 주는 페널티(불안정화). σ→σ* 전자 나눔은 반대로 엇갈린형이 안정한 이유(안정화)로, 방향이 정반대."
    }
   ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-23-1",
+  "session": "Day 29 · Ch.4-4~6",
+  "weak": [
+   "c4-06"
+  ],
+  "addCards": [
+   {
+    "id": "c4-07",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "ring puckering",
+    "q": "Why do cyclobutane and cyclopentane pucker instead of staying planar?",
+    "a": "To relieve torsional strain (eclipsing). They trade a small increase in angle strain for a larger decrease in torsional strain, so net total strain drops. Cyclopropane can't pucker (3 points force a plane)."
+   },
+   {
+    "id": "c4-08",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "cyclopentane eclipsing count",
+    "q": "평면 시클로펜테인의 torsional strain을 셀 때 C–C 결합당 H↔H 겹침은 몇 쌍인가?",
+    "a": "2쌍. 고리 탄소는 CH₂(H 2개)뿐이라 결합당 2쌍(에테인식 3쌍 아님). 5결합×2=10쌍×4.0=40 kJ/mol, puckering으로 40−26=14 kJ/mol 해소."
+   },
+   {
+    "id": "c4-09",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "chair strain-free",
+    "q": "Why is chair cyclohexane essentially strain-free?",
+    "a": "The chair reaches bond angles ~111° (≈109.5°, no angle strain) AND keeps all neighboring C–H bonds staggered (no torsional strain) at the same time."
+   },
+   {
+    "id": "c4-10",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "chair carbon arrangement",
+    "q": "의자형 시클로헥세인의 6탄소 배열과 뉴먼 투영 모습은?",
+    "a": "탄소 4개가 한 평면 + 1개 위 + 1개 아래(봉투형 4+1과 대비). C1–C2 뉴먼 투영은 완전 staggered."
+   },
+   {
+    "id": "c4-11",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "axial vs equatorial",
+    "q": "How are axial and equatorial bonds oriented in chair cyclohexane?",
+    "a": "Axial: parallel to the ring axis (straight up/down, alternating around the ring). Equatorial: outward, in the rough plane of the ring. Each carbon has one axial + one equatorial."
+   },
+   {
+    "id": "c4-12",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "ring-flip conf vs config",
+    "q": "ring-flip은 무엇을 바꾸고 무엇을 안 바꾸나? conformation 변화인가 configuration 변화인가?",
+    "a": "C–C 회전(결합 안 끊음)으로 모든 axial↔equatorial을 반전시키지만 면(cis/trans)은 불변 → conformation 변화(conformer). 장벽 ~45 kJ/mol이라 초고속 → ax/eq 분리 불가."
+   },
+   {
+    "id": "c4-13",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "ax/eq vs cis/trans",
+    "q": "Ax/eq vs cis/trans — which is a conformer relationship, which is a stereoisomer relationship?",
+    "a": "Ax/eq interconvert by ring-flip (rotation, same face) → conformers, not separable. Cis/trans differ in which face → need bond-breaking → stereoisomers, separable. Cis/trans requires ≥2 substituents."
+   },
+   {
+    "id": "c4-14",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "axial higher energy",
+    "q": "axial 치환기가 equatorial보다 에너지가 높은 이유는?",
+    "a": "1,3-diaxial steric 반발: axial기가 고리 축과 평행하게 서서 같은 면 C3·C5의 axial 원자와 붐빔. equatorial은 바깥으로 뻗어 널널. (정량은 4-7.)"
+   }
+  ]
  }
 ]
