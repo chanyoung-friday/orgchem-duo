@@ -168,5 +168,103 @@
     "a": "1,3-diaxial steric 반발: axial기가 고리 축과 평행하게 서서 같은 면 C3·C5의 axial 원자와 붐빔. equatorial은 바깥으로 뻗어 널널. (정량은 4-7.)"
    }
   ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-24-1",
+  "session": "Day 30 · Ch.4-7~9 (Ch.4 완주) + 인터루드",
+  "weak": [
+   "c4-06"
+  ],
+  "addCards": [
+   {
+    "id": "c4-15",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "1,3-diaxial quantified",
+    "q": "메틸시클로헥세인에서 axial이 equatorial보다 7.6 kJ/mol 높은 원인과, 7.6=2×3.8의 의미는?",
+    "a": "1,3-diaxial steric strain. axial 메틸이 같은 면 C3·C5의 axial H와 각각 부딪힘 = 3.8×2 = 7.6. 각 3.8은 gauche 뷰테인 1개와 동일."
+   },
+   {
+    "id": "c4-16",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "gauche identity",
+    "q": "axial 메틸↔C3 axial H 상호작용이 왜 gauche 뷰테인(3.8)과 '같은' 값인가? 우연인가?",
+    "a": "우연 ✗. 메틸탄소–C1–C2–C3 4탄소 조각이 gauche 뷰테인과 같은 기하(이면각 60°). 기하 동일 → strain 값 그대로 전이. 같은 상호작용의 두 이름."
+   },
+   {
+    "id": "c4-17",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "Table 4-1 trap",
+    "q": "Table 4-1의 1,3-diaxial strain 값을 쓸 때 함정은?",
+    "a": "표 값은 치환기와 H '하나당' 값. 모노치환 고리 total axial strain = ×2 (C3·C5 두 개). 예: OH 2.1 → 실제 4.2."
+   },
+   {
+    "id": "c4-18",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "bigger group equatorial",
+    "q": "크기가 다른 두 치환기가 같은 고리에서 경쟁하면 누가 equatorial로 가나?",
+    "a": "큰 치환기(1,3-diaxial 비용 큰 쪽)가 equatorial 우선. tert-butyl(H당 11.4→총 22.8)은 거의 항상 equatorial로 고리를 잠금. 각 의자 total 계산이 근거."
+   },
+   {
+    "id": "c4-19",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "disubstituted method",
+    "q": "이치환 시클로헥세인의 더 안정한 conformer 판정법은?",
+    "a": "두 의자를 다 그려 각 의자 total(치환기 gauche + 각 axial 치환기의 1,3-diaxial)을 합산 → 낮은 의자 채택. 이성질체(cis/trans)끼리 비교는 각자의 최저 의자값끼리."
+   },
+   {
+    "id": "c4-20",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "1,2 gauche always",
+    "q": "치환기가 1,2 vs 1,3·1,4일 때 gauche 계산 차이는? (자주 빠뜨림)",
+    "a": "1,2(인접)는 두 치환기 사이 gauche를 항상 추가(diequatorial이어도 남음, 3.8). 1,3·1,4는 서로 멀어 치환기간 gauche 0 → axial 치환기의 1,3-diaxial만."
+   },
+   {
+    "id": "c4-21",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "Table 4-2 rule",
+    "q": "Table 4-2(cis/trans×위치의 ax/eq)를 안 외우는 규칙은?",
+    "a": "번호 간격 홀짝. 간격 홀수(1,2·1,4·1,6)면 trans가 diequatorial(e,e) 가능. 간격 짝수(1,3·1,5)면 cis가 diequatorial 가능. 1,5≡1,3, 1,6≡1,2."
+   },
+   {
+    "id": "c4-22",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "not average",
+    "q": "한 이성질체의 안정도를 두 의자 에너지의 '평균'으로 판단하는 게 맞나?",
+    "a": "✗. conformer 비율은 ΔE=−RT ln K로 지수 가중(4-7)이라 최저 conformer가 지배(ΔE 11.4→~99:1). 최저 conformer 값 하나로 대표 = 사실상 정확."
+   },
+   {
+    "id": "c4-23",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "decalin",
+    "q": "데칼린 구조와 cis/trans 관계, 어느 게 더 안정한가?",
+    "a": "두 시클로헥세인이 탄소 2개(bridgehead) 공유·융합. bridgehead H 같은 면=cis/반대=trans → ring-flip 불가한 입체이성질체(=cis/trans-1,2-다이메틸 관계). trans-데칼린 더 안정(융합 결합 둘 다 equatorial, 여분 gauche 없음)."
+   },
+   {
+    "id": "c4-24",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "norbornane",
+    "q": "노보네인(bicyclo[2.2.1]heptane)은 어떤 형태가 잠긴 구조인가?",
+    "a": "conformationally locked boat 시클로헥세인. C1·C4가 추가 CH₂ 다리로 묶여 고정. 두 고리라 acyclic 만들려면 결합 2개 끊어야 함(bicycloalkane)."
+   },
+   {
+    "id": "c4-25",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "methyl-methyl diaxial",
+    "q": "메틸↔메틸 1,3-diaxial 상호작용은 몇 kJ/mol? (메틸↔H 3.8과 대비)",
+    "a": "≈15.4 kJ/mol. cis-1,3-다이메틸 diaxial이 diequatorial보다 23 높음 = 메틸-메틸(15.4) + 메틸-H 2개(2×3.8=7.6). 메틸끼리는 H 상대보다 훨씬 큼(뚱뚱)."
+   }
+  ]
  }
 ]
