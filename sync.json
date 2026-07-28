@@ -266,5 +266,83 @@
     "a": "≈15.4 kJ/mol. cis-1,3-다이메틸 diaxial이 diequatorial보다 23 높음 = 메틸-메틸(15.4) + 메틸-H 2개(2×3.8=7.6). 메틸끼리는 H 상대보다 훨씬 큼(뚱뚱)."
    }
   ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-27-1",
+  "session": "Day 31 · Ch.4 인터루드 마무리 + Ch.5-1~4",
+  "mastered": [
+   "c4-06"
+  ],
+  "weak": [
+   "c5-04",
+   "c5-06"
+  ],
+  "addCards": [
+   {
+    "id": "c5-01",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "chirality test",
+    "q": "Chiral vs achiral의 근본 판정법은?",
+    "a": "자기 거울상과 겹쳐지는가(superimposable). 실용 test = 대칭면(plane of symmetry) 유무 — 있으면 아키랄."
+   },
+   {
+    "id": "c5-02",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "chirality center",
+    "q": "What is a chirality center?",
+    "a": "An atom (usually sp³ C) bonded to four different groups."
+   },
+   {
+    "id": "c5-03",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "enantiomer properties",
+    "q": "Enantiomers share bp/mp/solubility but differ in optical rotation — why?",
+    "a": "bp·mp 등은 아키랄 측정(손대칭성 구별 못 함). 편광은 키랄 탐침이라 갈림 — 크기 같고 부호만 반대."
+   },
+   {
+    "id": "c5-04",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "specific rotation",
+    "q": "Specific rotation [α]_D 정의와 존재 이유는? (부호 주의)",
+    "a": "[α]_D = α_obs/(l×c), l=dm·c=g/mL. 농도·길이로 정규화해야 물질 고유 상수. D=Na D선 589nm. 관찰각 부호 그대로 살림."
+   },
+   {
+    "id": "c5-05",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "racemic rotation 0",
+    "q": "Why is a racemic mixture's observed rotation 0?",
+    "a": "50:50이라 크기 같고 부호 반대인 회전이 상쇄. 표기 (±)."
+   },
+   {
+    "id": "c5-06",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "screw is chiral",
+    "q": "Is a screw chiral? Why?",
+    "a": "Yes — 나사산이 나선(handed)이라 거울상과 안 겹침. (드라이버·캔은 대칭면 있어 아키랄.)"
+   },
+   {
+    "id": "c5-07",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "amine N not center",
+    "q": "코닌의 삼가 질소(amine N)가 키랄성 중심이 아닌 이유는?",
+    "a": "피라미드 반전(pyramidal inversion)이 초고속이라 두 거울상이 순간 상호전환 → 분리 불가 → 세지 않음 (5-10). 코닌 중심 = propyl 붙은 고리 C."
+   },
+   {
+    "id": "c5-08",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "(+)/(-) notation",
+    "q": "(+)/(−) 광회전 표기의 뜻은?",
+    "a": "(+) dextrorotatory=편광면 시계방향, (−) levorotatory=반시계방향. 관찰각 부호 그대로."
+   }
+  ]
  }
 ]
