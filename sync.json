@@ -1,649 +1,800 @@
 [
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-19-1",
-    "session": "Day 26 · Ch.3-7",
-    "promotePreview": [
-      "p37-01",
-      "p37-02",
-      "p37-03",
-      "p37-04"
-    ],
-    "addCards": [
-      {
-        "id": "c3-13",
-        "ch": "Ch.3",
-        "st": "learned",
-        "topic": "propane +2",
-        "q": "프로페인 회전 장벽이 에테인보다 딱 2 kJ/mol 높은 이유는? (14 vs 12)",
-        "a": "가려진 프로페인 = H↔H 2쌍(4.0) + H↔CH₃ 1쌍(6.0). H↔H 하나가 6.0으로 대체 → 6.0−4.0 = 2.0 더."
-      },
-      {
-        "id": "c3-14",
-        "ch": "Ch.3",
-        "st": "learned",
-        "topic": "torsional vs steric",
-        "q": "torsional strain vs steric strain — 원인 구분은?",
-        "a": "torsional = 결합이 겹침(가려짐)으로 안정화 오비탈 정렬을 잃음 = 각도 문제. steric = 원자가 반지름 허용치 안으로 밀려 반발 = 거리 문제."
-      },
-      {
-        "id": "c3-15",
-        "ch": "Ch.3",
-        "st": "learned",
-        "topic": "butane 4 forms",
-        "q": "뷰테인 C2–C3 4형태의 에너지 순서와, 완전 가려진형 19 kJ/mol 분해는?",
-        "a": "anti 0(최안정) / gauche 3.8(순수 steric) / eclipsed CH₃↔H 16 / eclipsed CH₃↔CH₃ 19 = CH₃↔CH₃ 11 + H↔H 2쌍(8). 일반 규칙: 모든 C–C 엇갈림 + 큰 치환기 anti."
-      }
-    ],
-    "mastered": [
-      "c3-09",
-      "c3-10"
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-21-1",
-    "session": "Day 28 · Ch.4-1~3",
-    "addCards": [
-      {
-        "id": "c4-01",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "naming parent",
-        "q": "시클로알케인 명명 STEP1 — parent를 고리로 잡는 조건은?",
-        "a": "고리 탄소 수 ≥ 최대 치환기 탄소 수 → 고리가 parent(알킬-치환 시클로알케인). 치환기가 더 크면 시클로알킬-치환 사슬알케인."
-      },
-      {
-        "id": "c4-02",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "cis/trans vs conformer",
-        "q": "cis–trans 이성체와 conformer(형태)의 결정적 차이는?",
-        "a": "분리 가능한가. conformer = 단일결합 회전만으로 상호전환(분리✗). cis–trans = 결합을 끊었다 만들어야 전환(고리가 회전 잠금) → 각각 분리되는 별개 화합물."
-      },
-      {
-        "id": "c4-03",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "stereo vs constitutional",
-        "q": "stereoisomer vs constitutional isomer 정의 차이는?",
-        "a": "stereoisomer = 원자 연결 순서 같고 3D 배향만 다름(cis/trans). constitutional = 연결 순서 자체가 다름(뷰테인/아이소뷰테인)."
-      },
-      {
-        "id": "c4-04",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "3 strains",
-        "q": "시클로알케인 3종 strain의 이름과 원인은?",
-        "a": "angle(결합각이 109°에서 팽창/압축) · torsional(인접 결합의 겹침 페널티) · steric(비결합 원자가 반지름 허용치보다 근접→반발)."
-      },
-      {
-        "id": "c4-05",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "Baeyer error",
-        "q": "Baeyer angle strain 이론이 틀린 이유는?",
-        "a": "모든 고리를 평면으로 가정. 실제 대부분 고리는 puckered(주름) 형태로 접혀 결합각을 거의 109°로 유지 → angle strain은 3·4원 고리에만, 시클로헥세인은 strain-free."
-      },
-      {
-        "id": "c4-06",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "torsional cause",
-        "q": "torsional strain의 원인은? (σ→σ* 전자 나눔과 혼동 금지)",
-        "a": "결합의 겹침(eclipsing) 자체가 주는 페널티(불안정화). σ→σ* 전자 나눔은 반대로 엇갈린형이 안정한 이유(안정화)로, 방향이 정반대."
-      }
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-23-1",
-    "session": "Day 29 · Ch.4-4~6",
-    "weak": [
-      "c4-06"
-    ],
-    "addCards": [
-      {
-        "id": "c4-07",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "ring puckering",
-        "q": "Why do cyclobutane and cyclopentane pucker instead of staying planar?",
-        "a": "To relieve torsional strain (eclipsing). They trade a small increase in angle strain for a larger decrease in torsional strain, so net total strain drops. Cyclopropane can't pucker (3 points force a plane)."
-      },
-      {
-        "id": "c4-08",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "cyclopentane eclipsing count",
-        "q": "평면 시클로펜테인의 torsional strain을 셀 때 C–C 결합당 H↔H 겹침은 몇 쌍인가?",
-        "a": "2쌍. 고리 탄소는 CH₂(H 2개)뿐이라 결합당 2쌍(에테인식 3쌍 아님). 5결합×2=10쌍×4.0=40 kJ/mol, puckering으로 40−26=14 kJ/mol 해소."
-      },
-      {
-        "id": "c4-09",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "chair strain-free",
-        "q": "Why is chair cyclohexane essentially strain-free?",
-        "a": "The chair reaches bond angles ~111° (≈109.5°, no angle strain) AND keeps all neighboring C–H bonds staggered (no torsional strain) at the same time."
-      },
-      {
-        "id": "c4-10",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "chair carbon arrangement",
-        "q": "의자형 시클로헥세인의 6탄소 배열과 뉴먼 투영 모습은?",
-        "a": "탄소 4개가 한 평면 + 1개 위 + 1개 아래(봉투형 4+1과 대비). C1–C2 뉴먼 투영은 완전 staggered."
-      },
-      {
-        "id": "c4-11",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "axial vs equatorial",
-        "q": "How are axial and equatorial bonds oriented in chair cyclohexane?",
-        "a": "Axial: parallel to the ring axis (straight up/down, alternating around the ring). Equatorial: outward, in the rough plane of the ring. Each carbon has one axial + one equatorial."
-      },
-      {
-        "id": "c4-12",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "ring-flip conf vs config",
-        "q": "ring-flip은 무엇을 바꾸고 무엇을 안 바꾸나? conformation 변화인가 configuration 변화인가?",
-        "a": "C–C 회전(결합 안 끊음)으로 모든 axial↔equatorial을 반전시키지만 면(cis/trans)은 불변 → conformation 변화(conformer). 장벽 ~45 kJ/mol이라 초고속 → ax/eq 분리 불가."
-      },
-      {
-        "id": "c4-13",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "ax/eq vs cis/trans",
-        "q": "Ax/eq vs cis/trans — which is a conformer relationship, which is a stereoisomer relationship?",
-        "a": "Ax/eq interconvert by ring-flip (rotation, same face) → conformers, not separable. Cis/trans differ in which face → need bond-breaking → stereoisomers, separable. Cis/trans requires ≥2 substituents."
-      },
-      {
-        "id": "c4-14",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "axial higher energy",
-        "q": "axial 치환기가 equatorial보다 에너지가 높은 이유는?",
-        "a": "1,3-diaxial steric 반발: axial기가 고리 축과 평행하게 서서 같은 면 C3·C5의 axial 원자와 붐빔. equatorial은 바깥으로 뻗어 널널. (정량은 4-7.)"
-      }
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-24-1",
-    "session": "Day 30 · Ch.4-7~9 (Ch.4 완주) + 인터루드",
-    "weak": [
-      "c4-06"
-    ],
-    "addCards": [
-      {
-        "id": "c4-15",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "1,3-diaxial quantified",
-        "q": "메틸시클로헥세인에서 axial이 equatorial보다 7.6 kJ/mol 높은 원인과, 7.6=2×3.8의 의미는?",
-        "a": "1,3-diaxial steric strain. axial 메틸이 같은 면 C3·C5의 axial H와 각각 부딪힘 = 3.8×2 = 7.6. 각 3.8은 gauche 뷰테인 1개와 동일."
-      },
-      {
-        "id": "c4-16",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "gauche identity",
-        "q": "axial 메틸↔C3 axial H 상호작용이 왜 gauche 뷰테인(3.8)과 '같은' 값인가? 우연인가?",
-        "a": "우연 ✗. 메틸탄소–C1–C2–C3 4탄소 조각이 gauche 뷰테인과 같은 기하(이면각 60°). 기하 동일 → strain 값 그대로 전이. 같은 상호작용의 두 이름."
-      },
-      {
-        "id": "c4-17",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "Table 4-1 trap",
-        "q": "Table 4-1의 1,3-diaxial strain 값을 쓸 때 함정은?",
-        "a": "표 값은 치환기와 H '하나당' 값. 모노치환 고리 total axial strain = ×2 (C3·C5 두 개). 예: OH 2.1 → 실제 4.2."
-      },
-      {
-        "id": "c4-18",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "bigger group equatorial",
-        "q": "크기가 다른 두 치환기가 같은 고리에서 경쟁하면 누가 equatorial로 가나?",
-        "a": "큰 치환기(1,3-diaxial 비용 큰 쪽)가 equatorial 우선. tert-butyl(H당 11.4→총 22.8)은 거의 항상 equatorial로 고리를 잠금. 각 의자 total 계산이 근거."
-      },
-      {
-        "id": "c4-19",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "disubstituted method",
-        "q": "이치환 시클로헥세인의 더 안정한 conformer 판정법은?",
-        "a": "두 의자를 다 그려 각 의자 total(치환기 gauche + 각 axial 치환기의 1,3-diaxial)을 합산 → 낮은 의자 채택. 이성질체(cis/trans)끼리 비교는 각자의 최저 의자값끼리."
-      },
-      {
-        "id": "c4-20",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "1,2 gauche always",
-        "q": "치환기가 1,2 vs 1,3·1,4일 때 gauche 계산 차이는? (자주 빠뜨림)",
-        "a": "1,2(인접)는 두 치환기 사이 gauche를 항상 추가(diequatorial이어도 남음, 3.8). 1,3·1,4는 서로 멀어 치환기간 gauche 0 → axial 치환기의 1,3-diaxial만."
-      },
-      {
-        "id": "c4-21",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "Table 4-2 rule",
-        "q": "Table 4-2(cis/trans×위치의 ax/eq)를 안 외우는 규칙은?",
-        "a": "번호 간격 홀짝. 간격 홀수(1,2·1,4·1,6)면 trans가 diequatorial(e,e) 가능. 간격 짝수(1,3·1,5)면 cis가 diequatorial 가능. 1,5≡1,3, 1,6≡1,2."
-      },
-      {
-        "id": "c4-22",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "not average",
-        "q": "한 이성질체의 안정도를 두 의자 에너지의 '평균'으로 판단하는 게 맞나?",
-        "a": "✗. conformer 비율은 ΔE=−RT ln K로 지수 가중(4-7)이라 최저 conformer가 지배(ΔE 11.4→~99:1). 최저 conformer 값 하나로 대표 = 사실상 정확."
-      },
-      {
-        "id": "c4-23",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "decalin",
-        "q": "데칼린 구조와 cis/trans 관계, 어느 게 더 안정한가?",
-        "a": "두 시클로헥세인이 탄소 2개(bridgehead) 공유·융합. bridgehead H 같은 면=cis/반대=trans → ring-flip 불가한 입체이성질체(=cis/trans-1,2-다이메틸 관계). trans-데칼린 더 안정(융합 결합 둘 다 equatorial, 여분 gauche 없음)."
-      },
-      {
-        "id": "c4-24",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "norbornane",
-        "q": "노보네인(bicyclo[2.2.1]heptane)은 어떤 형태가 잠긴 구조인가?",
-        "a": "conformationally locked boat 시클로헥세인. C1·C4가 추가 CH₂ 다리로 묶여 고정. 두 고리라 acyclic 만들려면 결합 2개 끊어야 함(bicycloalkane)."
-      },
-      {
-        "id": "c4-25",
-        "ch": "Ch.4",
-        "st": "learned",
-        "topic": "methyl-methyl diaxial",
-        "q": "메틸↔메틸 1,3-diaxial 상호작용은 몇 kJ/mol? (메틸↔H 3.8과 대비)",
-        "a": "≈15.4 kJ/mol. cis-1,3-다이메틸 diaxial이 diequatorial보다 23 높음 = 메틸-메틸(15.4) + 메틸-H 2개(2×3.8=7.6). 메틸끼리는 H 상대보다 훨씬 큼(뚱뚱)."
-      }
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-27-1",
-    "session": "Day 31 · Ch.4 인터루드 마무리 + Ch.5-1~4",
-    "mastered": [
-      "c4-06"
-    ],
-    "weak": [
-      "c5-04",
-      "c5-06"
-    ],
-    "addCards": [
-      {
-        "id": "c5-01",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "chirality test",
-        "q": "Chiral vs achiral의 근본 판정법은?",
-        "a": "자기 거울상과 겹쳐지는가(superimposable). 실용 test = 대칭면(plane of symmetry) 유무 — 있으면 아키랄."
-      },
-      {
-        "id": "c5-02",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "chirality center",
-        "q": "What is a chirality center?",
-        "a": "An atom (usually sp³ C) bonded to four different groups."
-      },
-      {
-        "id": "c5-03",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "enantiomer properties",
-        "q": "Enantiomers share bp/mp/solubility but differ in optical rotation — why?",
-        "a": "bp·mp 등은 아키랄 측정(손대칭성 구별 못 함). 편광은 키랄 탐침이라 갈림 — 크기 같고 부호만 반대."
-      },
-      {
-        "id": "c5-04",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "specific rotation",
-        "q": "Specific rotation [α]_D 정의와 존재 이유는? (부호 주의)",
-        "a": "[α]_D = α_obs/(l×c), l=dm·c=g/mL. 농도·길이로 정규화해야 물질 고유 상수. D=Na D선 589nm. 관찰각 부호 그대로 살림."
-      },
-      {
-        "id": "c5-05",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "racemic rotation 0",
-        "q": "Why is a racemic mixture's observed rotation 0?",
-        "a": "50:50이라 크기 같고 부호 반대인 회전이 상쇄. 표기 (±)."
-      },
-      {
-        "id": "c5-06",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "screw is chiral",
-        "q": "Is a screw chiral? Why?",
-        "a": "Yes — 나사산이 나선(handed)이라 거울상과 안 겹침. (드라이버·캔은 대칭면 있어 아키랄.)"
-      },
-      {
-        "id": "c5-07",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "amine N not center",
-        "q": "코닌의 삼가 질소(amine N)가 키랄성 중심이 아닌 이유는?",
-        "a": "피라미드 반전(pyramidal inversion)이 초고속이라 두 거울상이 순간 상호전환 → 분리 불가 → 세지 않음 (5-10). 코닌 중심 = propyl 붙은 고리 C."
-      },
-      {
-        "id": "c5-08",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "(+)/(-) notation",
-        "q": "(+)/(−) 광회전 표기의 뜻은?",
-        "a": "(+) dextrorotatory=편광면 시계방향, (−) levorotatory=반시계방향. 관찰각 부호 그대로."
-      }
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-28-1",
-    "session": "Day 32 · Ch.5-5~7 (R/S·부분입체·meso)",
-    "weak": [
-      "c5-06"
-    ],
-    "addCards": [
-      {
-        "id": "c5-09",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "CIP tie-break",
-        "q": "CIP 서열에서 첫 원자가 동점이면? (그룹 통째 비교 ✗)",
-        "a": "원자별·층별로. 그 원자에 직접 붙은 원자들을 큰 순서로 정렬 → 상대와 1등끼리·2등끼리 비교, 처음 차이나는 원자에서 결판. 안쪽 층이 완전히 동점일 때만 바깥으로(높은 가지부터). 개수가 아니라 '1등 원자 크기'가 최우선."
-      },
-      {
-        "id": "c5-10",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "CIP rule 3 duplicate",
-        "q": "CIP 규칙 3 — 이중·삼중결합은 어떻게 세나? 왜?",
-        "a": "다중결합 = 복제(phantom) 원자. C=O → 그 C는 (O,O,·)·그 O는 (C,C)로 봄. C≡N → C는 (N,N,N). 단일결합만의 원자와 붙은 개수를 공평히 맞춰 비교하려고."
-      },
-      {
-        "id": "c5-11",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "R/S procedure + trap",
-        "q": "R/S 배정 절차와, 4번이 관찰자 앞(쐐기)일 때 처리는?",
-        "a": "4번(최저)을 뒤로 두고 1→2→3: 시계=R(rectus)·반시계=S(sinister). 4번이 앞(쐐기)이면 보이는 방향을 뒤집어 판정. 4번이 평면이면 스왑 1회=배치 반전으로 뒤로 보낸 뒤 읽음."
-      },
-      {
-        "id": "c5-12",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "rotation vs R/S",
-        "q": "R/S 표기와 선광 방향(+/−)은 관계 있나?",
-        "a": "무관. (S)-글리세르알데하이드는 (−), (S)-알라닌은 (+). 부호·크기는 R/S로 예측 불가한 실험값. 절대배치는 1951 X선 회절로 확정."
-      },
-      {
-        "id": "c5-13",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "diastereomer vs enantiomer",
-        "q": "거울상(enantiomer) vs 부분입체(diastereomer) 정의 차이는?",
-        "a": "enantiomer = 모든 키랄중심 배치 반대(거울상). diastereomer = 일부만 반대·일부는 같음(거울상 아닌 입체이성질체). 예: 2R,3R의 부분입체 = 2R,3S·2S,3R."
-      },
-      {
-        "id": "c5-14",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "2^n rule",
-        "q": "키랄중심 n개면 입체이성질체 몇 개? 언제 그보다 적어지나?",
-        "a": "최대 2ⁿ. meso가 생기면(내부 대칭으로 두 이성질체가 동일해짐) 그보다 적음. 예: 타르타르산 2²=4가 아니라 3(거울상 2 + meso 1)."
-      },
-      {
-        "id": "c5-15",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "epimer",
-        "q": "epimer(에피머)란?",
-        "a": "키랄중심이 여럿인데 딱 하나만 배치가 다른 부분입체이성질체. 예: 콜레스탄올·코프로스탄올 = 9중심 중 C5 하나만 다름."
-      },
-      {
-        "id": "c5-16",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "meso compound",
-        "q": "meso 화합물은 왜 키랄중심이 있는데도 아키랄(광학불활성)인가?",
-        "a": "분자 내부에 대칭면 → 자기 거울상과 겹침 → 아키랄. 한 중심(R)이 다른 중심(S)을 상쇄. 예: meso-타르타르산(2R,3S), cis-1,2-다이메틸시클로뷰테인."
-      },
-      {
-        "id": "c5-17",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "diastereomer properties",
-        "q": "meso(부분입체)와 (+)/(−)형의 물성이 다른 이유는? '물성 동일' 규칙의 경계는?",
-        "a": "'물성 동일'은 enantiomer(거울상)끼리만 성립. diastereomer는 서로 다른 화합물이라 mp·용해도·[α] 모두 다름. meso-타르타르산 mp 146–148 vs (±) 168–170, [α]=0."
-      }
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-29-1",
-    "session": "Day 33 · Ch.5-8~12 (Ch.5 본문 완주)",
-    "mastered": [
-      "c5-06"
-    ],
-    "weak": [
-      "c5-22"
-    ],
-    "addCards": [
-      {
-        "id": "c5-18",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "resolution",
-        "q": "라세미 혼합물의 두 거울상을 어떻게 분리(분할)하나? 시약 조건은?",
-        "a": "거울상은 물성 동일→직접 분리 불가. 순수 단일 거울상 키랄시약(예 키랄 아민)과 반응→부분입체(diastereomer) 염 형성→물성(용해도)차로 재결정 분리→강산으로 시약 떼어 순수 거울상 회수. 시약이 라세믹이면 4염이 되어 다시 라세믹→반드시 단일 거울상."
-      },
-      {
-        "id": "c5-19",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "N vs P chirality (pyramidal inversion)",
-        "q": "아민 N은 서로 다른 3그룹+비공유쌍인데 왜 키랄중심이 아닌가? 포스핀 P는?",
-        "a": "N=피라미드 반전(우산 뒤집힘) 초고속(~6 kcal/mol)→R⇄S 순간 상호전환→분리 불가→키랄중심 ✗. 포스핀 P=반전장벽 높음(~30–35)→반전 느림→분리 가능→진짜 키랄중심. McMurry가 phosphine을 예로 든 이유."
-      },
-      {
-        "id": "c5-20",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "pro-R/pro-S determination",
-        "q": "프로키랄 sp³의 두 쌍둥이를 pro-R/pro-S로 어떻게 가르나? D-치환 편법의 한계?",
-        "a": "쌍둥이 중 하나에게 '다른 쌍둥이보다만' 높은 우선순위 부여(실제 치환 ✗)→R/S 판정, R이면 pro-R. 실제 원자 안 바꾸니 상위 순위 교란 없음·쌍둥이가 중간·상위여도 무관. D-치환은 편법이라 이미 D가 있으면 깨짐."
-      },
-      {
-        "id": "c5-21",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "Re/Si faces",
-        "q": "sp² 삼각중심의 프로키랄 면(Re/Si)은 어떻게 정하나?",
-        "a": "세 그룹 CIP 1→2→3이 시계=Re·반시계=Si. 한 면에 그룹 하나 첨가로 키랄 생성(2-뷰탄온 Re면에 H→(S)-뷰탄올, Si면→(R)). '단일 스텝'=그 원자 자리에 그룹 하나 첨가."
-      },
-      {
-        "id": "c5-22",
-        "ch": "Ch.5",
-        "st": "weak",
-        "topic": "anti addition Re/Si trap",
-        "q": "이중결합에 anti(반대편) 첨가하면 두 탄소의 Re/Si는 반드시 갈리나? (아코니테이스 함정)",
-        "a": "아니오. Re/Si는 물리적 위/아래가 아니라 각 탄소의 치환기로 따로 계산. 두 탄소 배열이 다르면 물리적 반대편(anti)이어도 둘 다 Re일 수 있음. cis-aconitate 수화: OH·H 둘 다 Re면, 서로 anti→(2R,3S)."
-      },
-      {
-        "id": "c5-23",
-        "ch": "Ch.5",
-        "st": "learned",
-        "topic": "chirality in nature / why prochirality",
-        "q": "왜 거울상이 생체에서 다르게 작용하나? 프로키랄을 배우는 진짜 이유는?",
-        "a": "효소·수용체가 키랄→한쪽 거울상만 결합(손-장갑, 3점 결합). 효소가 프로키랄 기질의 pro-R/pro-S·Re/Si를 구별(NAD 특정 H 이동, 시트르산 특정 팔=Ogston). 명명이 목적이 아니라 '똑같아 보이는 것을 생체가 구별'이 핵심."
-      }
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-07-31-1",
-    "session": "Day 34 · Ch.5 연습/장끝 + Ch.6-1~3 진입",
-    "mastered": [
-      "c5-22"
-    ],
-    "weak": [],
-    "addCards": [
-      {
-        "id": "c6-01",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "유기반응 4종",
-        "q": "유기반응 4종류와 각각의 원자 수지(반응물↔생성물)는?",
-        "a": "첨가=둘이 합쳐 하나(남는 원자 ✗) / 제거=하나가 둘로(작은 분자 방출, 첨가의 역) / 치환=두 반응물이 부분 교환→새 두 분자 / 자리옮김=한 분자 내 결합·원자 재배치→이성질체."
-      },
-      {
-        "id": "c6-02",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "homolytic vs heterolytic",
-        "q": "2전자 공유결합이 깨지는 두 방식? (전자 분배·화살표·반응종류)",
-        "a": "homolytic=대칭, 전자 하나씩 각 조각으로, 낚싯바늘(반쪽) 화살표, radical. heterolytic=비대칭, 두 전자 다 한쪽으로(반대쪽 빈 오비탈), 완전 굽은 화살표, polar."
-      },
-      {
-        "id": "c6-03",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "radical vs polar 화학종",
-        "q": "radical과 polar(이온) 화학종의 전자 수 차이? 어느 쪽이 흔한가?",
-        "a": "radical=홀수 전자(홀전자 1개). polar=짝수 전자(전자쌍만, 이온). polar 반응이 유기·생화학에서 압도적으로 흔함(책 대부분이 polar)."
-      },
-      {
-        "id": "c6-04",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "라디칼 사슬 3단계",
-        "q": "라디칼 사슬반응 3단계와 각 역할? (메테인 염소화)",
-        "a": "개시(initiation)=빛으로 Cl–Cl 균일분해→Cl· 소수 생성. 전파(propagation)=Cl·+CH4→HCl+·CH3, ·CH3+Cl2→CH3Cl+Cl· (Cl· 재생→자기지속 사슬). 종결(termination)=라디칼 둘이 결합→사슬 끊김."
-      },
-      {
-        "id": "c6-05",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "라디칼 염소화 합성 부적합",
-        "q": "라디칼 염소화가 합성용으로 별로인 이유? (2-메틸펜테인 예)",
-        "a": "서로 다른 C–H가 여러 종류면 각각 치환→생성물 혼합물. 2-메틸펜테인 Cl2 → 일염소화물 5종(1-/2-/3-Cl-2-Me펜테인, 2-/1-Cl-4-Me펜테인). 한 자리만 선택 안 됨."
-      }
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-08-03-1",
-    "session": "Day 35 — Ch.5 인터루드 완료 + Ch.6-4~6",
-    "addCards": [
-      {
-        "id": "c6-06",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "nu/electrophile",
-        "q": "극성반응은 왜 일어나나? nucleophile·electrophile을 전자 관점에서 정의?",
-        "a": "전자 풍부 자리와 전자 부족 자리의 정전기적 끌림. nucleophile=전자쌍 공여(고립쌍/π, 전자풍부), electrophile=전자쌍 수용(δ+·빈 오비탈). 결합은 nu→e로 전자 흐름. 한 분자가 자리에 따라 둘 다 가능(C=O: O 친핵·C 친전자)."
-      },
-      {
-        "id": "c6-07",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "polarizability",
-        "q": "분극성이 왜 중요? 큰 원자(I,S)가 좋은 핵친화체인 이유?",
-        "a": "큰 원자=외곽 전자가 핵에서 멀어 느슨→접근하는 전하에 전자구름 쉽게 쏠림(왜곡). 멀리서도 결합 시작→반응성↑. 친핵성은 전기음성도가 아니라 '내줄 전자쌍+느슨함'에서 옴."
-      },
-      {
-        "id": "c6-08",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "HBr+ethylene",
-        "q": "HBr+에틸렌 메커니즘 단계·중간체? 첨가 생성물 분자식?",
-        "a": "2단계. ①π→H(새 C–H)·H–Br 불균일분해(전자 다 Br로→Br⁻)→카보양이온 CH₃CH₂⁺. ②Br⁻ 고립쌍→C⁺→CH₃CH₂Br. 첨가=C₂H₅Br(H 4→5, C₂H₃Br 아님)."
-      },
-      {
-        "id": "c6-09",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "curved arrows",
-        "q": "굽은 화살표 규칙? 꼬리·머리·방향?",
-        "a": "전자쌍의 이동. 꼬리=전자 공급원(고립쌍 또는 결합), 머리=친전자성 자리(새 결합 생기는 곳). 방향 언제나 nu→e, 반대 ✗. 낚싯바늘(반쪽)=홀전자 1개."
-      }
-    ],
-    "weak": [
-      "c5-04",
-      "c6-02",
-      "c6-03",
-      "c6-04",
-      "c6-05"
-    ],
-    "mastered": [
-      "c6-01"
-    ]
-  },
-  {
-    "type": "orgchem-sync",
-    "sid": "2026-08-04-1",
-    "session": "Day 36 — Ch.6-7~9 (평형·속도·에너지 / BDE / 에너지도표·전이상태)",
-    "weak": [
-      "c5-04",
-      "c6-05"
-    ],
-    "mastered": [
-      "c6-04",
-      "c6-02",
-      "c6-03",
-      "c6-07",
-      "c6-09"
-    ],
-    "addCards": [
-      {
-        "id": "c6-10",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "열역학 vs 속도론",
-        "q": "ΔG°와 ΔG‡는 각각 반응의 무엇을 결정하나?",
-        "a": "ΔG°=열역학(얼마나 유리한가·평형 위치·Keq). ΔG‡=속도론(얼마나 빠른가). 서로 독립 — 아무리 발열이어도 ΔG‡ 높으면 느림."
-      },
-      {
-        "id": "c6-11",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "Keq↔ΔG° 부호",
-        "q": "ΔG°=−RT ln Keq. Keq>1이면 ΔG° 부호와 우세한 쪽은?",
-        "a": "Keq>1 → ln Keq>0 → ΔG°<0(exergonic), 생성물 우세. Keq<1 → ΔG°>0, 반응물 우세."
-      },
-      {
-        "id": "c6-12",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "자발성=두 축 경쟁",
-        "q": "결합이 더 약해지는데도(ΔH 불리) 반응이 자발적일 수 있는 이유?",
-        "a": "자발성=엔탈피(결합 세기)+엔트로피(무질서)의 합, ΔG=ΔH−TΔS. 무질서 증가(TΔS>0)가 엔탈피 손해를 이기면 ΔG<0. 예: 얼음이 녹음(ΔH>0인데도 상온 자발적)."
-      },
-      {
-        "id": "c6-13",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "전이상태 vs 중간체",
-        "q": "전이상태와 중간체 — 에너지 도표 위치와 분리 가능성?",
-        "a": "전이상태=봉우리(에너지 최대), 분리 불가(순간적). 중간체=골짜기(국소 최소), 분리 가능(실제 물질)."
-      },
-      {
-        "id": "c6-14",
-        "ch": "Ch.6",
-        "st": "learned",
-        "topic": "BDE 정의",
-        "q": "결합해리에너지(BDE, D)의 정의와 부호는?",
-        "a": "기체상 25°C에서 결합을 homolytic하게 끊어 두 라디칼을 만드는 데 필요한 에너지. 항상 양수(깨기=에너지 투입). 강한 결합일수록 큰 BDE."
-      }
-    ]
-  }
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-19-1",
+  "session": "Day 26 · Ch.3-7",
+  "promotePreview": [
+   "p37-01",
+   "p37-02",
+   "p37-03",
+   "p37-04"
+  ],
+  "addCards": [
+   {
+    "id": "c3-13",
+    "ch": "Ch.3",
+    "st": "learned",
+    "topic": "propane +2",
+    "q": "프로페인 회전 장벽이 에테인보다 딱 2 kJ/mol 높은 이유는? (14 vs 12)",
+    "a": "가려진 프로페인 = H↔H 2쌍(4.0) + H↔CH₃ 1쌍(6.0). H↔H 하나가 6.0으로 대체 → 6.0−4.0 = 2.0 더."
+   },
+   {
+    "id": "c3-14",
+    "ch": "Ch.3",
+    "st": "learned",
+    "topic": "torsional vs steric",
+    "q": "torsional strain vs steric strain — 원인 구분은?",
+    "a": "torsional = 결합이 겹침(가려짐)으로 안정화 오비탈 정렬을 잃음 = 각도 문제. steric = 원자가 반지름 허용치 안으로 밀려 반발 = 거리 문제."
+   },
+   {
+    "id": "c3-15",
+    "ch": "Ch.3",
+    "st": "learned",
+    "topic": "butane 4 forms",
+    "q": "뷰테인 C2–C3 4형태의 에너지 순서와, 완전 가려진형 19 kJ/mol 분해는?",
+    "a": "anti 0(최안정) / gauche 3.8(순수 steric) / eclipsed CH₃↔H 16 / eclipsed CH₃↔CH₃ 19 = CH₃↔CH₃ 11 + H↔H 2쌍(8). 일반 규칙: 모든 C–C 엇갈림 + 큰 치환기 anti."
+   }
+  ],
+  "mastered": [
+   "c3-09",
+   "c3-10"
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-21-1",
+  "session": "Day 28 · Ch.4-1~3",
+  "addCards": [
+   {
+    "id": "c4-01",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "naming parent",
+    "q": "시클로알케인 명명 STEP1 — parent를 고리로 잡는 조건은?",
+    "a": "고리 탄소 수 ≥ 최대 치환기 탄소 수 → 고리가 parent(알킬-치환 시클로알케인). 치환기가 더 크면 시클로알킬-치환 사슬알케인."
+   },
+   {
+    "id": "c4-02",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "cis/trans vs conformer",
+    "q": "cis–trans 이성체와 conformer(형태)의 결정적 차이는?",
+    "a": "분리 가능한가. conformer = 단일결합 회전만으로 상호전환(분리✗). cis–trans = 결합을 끊었다 만들어야 전환(고리가 회전 잠금) → 각각 분리되는 별개 화합물."
+   },
+   {
+    "id": "c4-03",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "stereo vs constitutional",
+    "q": "stereoisomer vs constitutional isomer 정의 차이는?",
+    "a": "stereoisomer = 원자 연결 순서 같고 3D 배향만 다름(cis/trans). constitutional = 연결 순서 자체가 다름(뷰테인/아이소뷰테인)."
+   },
+   {
+    "id": "c4-04",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "3 strains",
+    "q": "시클로알케인 3종 strain의 이름과 원인은?",
+    "a": "angle(결합각이 109°에서 팽창/압축) · torsional(인접 결합의 겹침 페널티) · steric(비결합 원자가 반지름 허용치보다 근접→반발)."
+   },
+   {
+    "id": "c4-05",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "Baeyer error",
+    "q": "Baeyer angle strain 이론이 틀린 이유는?",
+    "a": "모든 고리를 평면으로 가정. 실제 대부분 고리는 puckered(주름) 형태로 접혀 결합각을 거의 109°로 유지 → angle strain은 3·4원 고리에만, 시클로헥세인은 strain-free."
+   },
+   {
+    "id": "c4-06",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "torsional cause",
+    "q": "torsional strain의 원인은? (σ→σ* 전자 나눔과 혼동 금지)",
+    "a": "결합의 겹침(eclipsing) 자체가 주는 페널티(불안정화). σ→σ* 전자 나눔은 반대로 엇갈린형이 안정한 이유(안정화)로, 방향이 정반대."
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-23-1",
+  "session": "Day 29 · Ch.4-4~6",
+  "weak": [
+   "c4-06"
+  ],
+  "addCards": [
+   {
+    "id": "c4-07",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "ring puckering",
+    "q": "Why do cyclobutane and cyclopentane pucker instead of staying planar?",
+    "a": "To relieve torsional strain (eclipsing). They trade a small increase in angle strain for a larger decrease in torsional strain, so net total strain drops. Cyclopropane can't pucker (3 points force a plane)."
+   },
+   {
+    "id": "c4-08",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "cyclopentane eclipsing count",
+    "q": "평면 시클로펜테인의 torsional strain을 셀 때 C–C 결합당 H↔H 겹침은 몇 쌍인가?",
+    "a": "2쌍. 고리 탄소는 CH₂(H 2개)뿐이라 결합당 2쌍(에테인식 3쌍 아님). 5결합×2=10쌍×4.0=40 kJ/mol, puckering으로 40−26=14 kJ/mol 해소."
+   },
+   {
+    "id": "c4-09",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "chair strain-free",
+    "q": "Why is chair cyclohexane essentially strain-free?",
+    "a": "The chair reaches bond angles ~111° (≈109.5°, no angle strain) AND keeps all neighboring C–H bonds staggered (no torsional strain) at the same time."
+   },
+   {
+    "id": "c4-10",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "chair carbon arrangement",
+    "q": "의자형 시클로헥세인의 6탄소 배열과 뉴먼 투영 모습은?",
+    "a": "탄소 4개가 한 평면 + 1개 위 + 1개 아래(봉투형 4+1과 대비). C1–C2 뉴먼 투영은 완전 staggered."
+   },
+   {
+    "id": "c4-11",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "axial vs equatorial",
+    "q": "How are axial and equatorial bonds oriented in chair cyclohexane?",
+    "a": "Axial: parallel to the ring axis (straight up/down, alternating around the ring). Equatorial: outward, in the rough plane of the ring. Each carbon has one axial + one equatorial."
+   },
+   {
+    "id": "c4-12",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "ring-flip conf vs config",
+    "q": "ring-flip은 무엇을 바꾸고 무엇을 안 바꾸나? conformation 변화인가 configuration 변화인가?",
+    "a": "C–C 회전(결합 안 끊음)으로 모든 axial↔equatorial을 반전시키지만 면(cis/trans)은 불변 → conformation 변화(conformer). 장벽 ~45 kJ/mol이라 초고속 → ax/eq 분리 불가."
+   },
+   {
+    "id": "c4-13",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "ax/eq vs cis/trans",
+    "q": "Ax/eq vs cis/trans — which is a conformer relationship, which is a stereoisomer relationship?",
+    "a": "Ax/eq interconvert by ring-flip (rotation, same face) → conformers, not separable. Cis/trans differ in which face → need bond-breaking → stereoisomers, separable. Cis/trans requires ≥2 substituents."
+   },
+   {
+    "id": "c4-14",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "axial higher energy",
+    "q": "axial 치환기가 equatorial보다 에너지가 높은 이유는?",
+    "a": "1,3-diaxial steric 반발: axial기가 고리 축과 평행하게 서서 같은 면 C3·C5의 axial 원자와 붐빔. equatorial은 바깥으로 뻗어 널널. (정량은 4-7.)"
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-24-1",
+  "session": "Day 30 · Ch.4-7~9 (Ch.4 완주) + 인터루드",
+  "weak": [
+   "c4-06"
+  ],
+  "addCards": [
+   {
+    "id": "c4-15",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "1,3-diaxial quantified",
+    "q": "메틸시클로헥세인에서 axial이 equatorial보다 7.6 kJ/mol 높은 원인과, 7.6=2×3.8의 의미는?",
+    "a": "1,3-diaxial steric strain. axial 메틸이 같은 면 C3·C5의 axial H와 각각 부딪힘 = 3.8×2 = 7.6. 각 3.8은 gauche 뷰테인 1개와 동일."
+   },
+   {
+    "id": "c4-16",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "gauche identity",
+    "q": "axial 메틸↔C3 axial H 상호작용이 왜 gauche 뷰테인(3.8)과 '같은' 값인가? 우연인가?",
+    "a": "우연 ✗. 메틸탄소–C1–C2–C3 4탄소 조각이 gauche 뷰테인과 같은 기하(이면각 60°). 기하 동일 → strain 값 그대로 전이. 같은 상호작용의 두 이름."
+   },
+   {
+    "id": "c4-17",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "Table 4-1 trap",
+    "q": "Table 4-1의 1,3-diaxial strain 값을 쓸 때 함정은?",
+    "a": "표 값은 치환기와 H '하나당' 값. 모노치환 고리 total axial strain = ×2 (C3·C5 두 개). 예: OH 2.1 → 실제 4.2."
+   },
+   {
+    "id": "c4-18",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "bigger group equatorial",
+    "q": "크기가 다른 두 치환기가 같은 고리에서 경쟁하면 누가 equatorial로 가나?",
+    "a": "큰 치환기(1,3-diaxial 비용 큰 쪽)가 equatorial 우선. tert-butyl(H당 11.4→총 22.8)은 거의 항상 equatorial로 고리를 잠금. 각 의자 total 계산이 근거."
+   },
+   {
+    "id": "c4-19",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "disubstituted method",
+    "q": "이치환 시클로헥세인의 더 안정한 conformer 판정법은?",
+    "a": "두 의자를 다 그려 각 의자 total(치환기 gauche + 각 axial 치환기의 1,3-diaxial)을 합산 → 낮은 의자 채택. 이성질체(cis/trans)끼리 비교는 각자의 최저 의자값끼리."
+   },
+   {
+    "id": "c4-20",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "1,2 gauche always",
+    "q": "치환기가 1,2 vs 1,3·1,4일 때 gauche 계산 차이는? (자주 빠뜨림)",
+    "a": "1,2(인접)는 두 치환기 사이 gauche를 항상 추가(diequatorial이어도 남음, 3.8). 1,3·1,4는 서로 멀어 치환기간 gauche 0 → axial 치환기의 1,3-diaxial만."
+   },
+   {
+    "id": "c4-21",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "Table 4-2 rule",
+    "q": "Table 4-2(cis/trans×위치의 ax/eq)를 안 외우는 규칙은?",
+    "a": "번호 간격 홀짝. 간격 홀수(1,2·1,4·1,6)면 trans가 diequatorial(e,e) 가능. 간격 짝수(1,3·1,5)면 cis가 diequatorial 가능. 1,5≡1,3, 1,6≡1,2."
+   },
+   {
+    "id": "c4-22",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "not average",
+    "q": "한 이성질체의 안정도를 두 의자 에너지의 '평균'으로 판단하는 게 맞나?",
+    "a": "✗. conformer 비율은 ΔE=−RT ln K로 지수 가중(4-7)이라 최저 conformer가 지배(ΔE 11.4→~99:1). 최저 conformer 값 하나로 대표 = 사실상 정확."
+   },
+   {
+    "id": "c4-23",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "decalin",
+    "q": "데칼린 구조와 cis/trans 관계, 어느 게 더 안정한가?",
+    "a": "두 시클로헥세인이 탄소 2개(bridgehead) 공유·융합. bridgehead H 같은 면=cis/반대=trans → ring-flip 불가한 입체이성질체(=cis/trans-1,2-다이메틸 관계). trans-데칼린 더 안정(융합 결합 둘 다 equatorial, 여분 gauche 없음)."
+   },
+   {
+    "id": "c4-24",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "norbornane",
+    "q": "노보네인(bicyclo[2.2.1]heptane)은 어떤 형태가 잠긴 구조인가?",
+    "a": "conformationally locked boat 시클로헥세인. C1·C4가 추가 CH₂ 다리로 묶여 고정. 두 고리라 acyclic 만들려면 결합 2개 끊어야 함(bicycloalkane)."
+   },
+   {
+    "id": "c4-25",
+    "ch": "Ch.4",
+    "st": "learned",
+    "topic": "methyl-methyl diaxial",
+    "q": "메틸↔메틸 1,3-diaxial 상호작용은 몇 kJ/mol? (메틸↔H 3.8과 대비)",
+    "a": "≈15.4 kJ/mol. cis-1,3-다이메틸 diaxial이 diequatorial보다 23 높음 = 메틸-메틸(15.4) + 메틸-H 2개(2×3.8=7.6). 메틸끼리는 H 상대보다 훨씬 큼(뚱뚱)."
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-27-1",
+  "session": "Day 31 · Ch.4 인터루드 마무리 + Ch.5-1~4",
+  "mastered": [
+   "c4-06"
+  ],
+  "weak": [
+   "c5-04",
+   "c5-06"
+  ],
+  "addCards": [
+   {
+    "id": "c5-01",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "chirality test",
+    "q": "Chiral vs achiral의 근본 판정법은?",
+    "a": "자기 거울상과 겹쳐지는가(superimposable). 실용 test = 대칭면(plane of symmetry) 유무 — 있으면 아키랄."
+   },
+   {
+    "id": "c5-02",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "chirality center",
+    "q": "What is a chirality center?",
+    "a": "An atom (usually sp³ C) bonded to four different groups."
+   },
+   {
+    "id": "c5-03",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "enantiomer properties",
+    "q": "Enantiomers share bp/mp/solubility but differ in optical rotation — why?",
+    "a": "bp·mp 등은 아키랄 측정(손대칭성 구별 못 함). 편광은 키랄 탐침이라 갈림 — 크기 같고 부호만 반대."
+   },
+   {
+    "id": "c5-04",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "specific rotation",
+    "q": "Specific rotation [α]_D 정의와 존재 이유는? (부호 주의)",
+    "a": "[α]_D = α_obs/(l×c), l=dm·c=g/mL. 농도·길이로 정규화해야 물질 고유 상수. D=Na D선 589nm. 관찰각 부호 그대로 살림."
+   },
+   {
+    "id": "c5-05",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "racemic rotation 0",
+    "q": "Why is a racemic mixture's observed rotation 0?",
+    "a": "50:50이라 크기 같고 부호 반대인 회전이 상쇄. 표기 (±)."
+   },
+   {
+    "id": "c5-06",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "screw is chiral",
+    "q": "Is a screw chiral? Why?",
+    "a": "Yes — 나사산이 나선(handed)이라 거울상과 안 겹침. (드라이버·캔은 대칭면 있어 아키랄.)"
+   },
+   {
+    "id": "c5-07",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "amine N not center",
+    "q": "코닌의 삼가 질소(amine N)가 키랄성 중심이 아닌 이유는?",
+    "a": "피라미드 반전(pyramidal inversion)이 초고속이라 두 거울상이 순간 상호전환 → 분리 불가 → 세지 않음 (5-10). 코닌 중심 = propyl 붙은 고리 C."
+   },
+   {
+    "id": "c5-08",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "(+)/(-) notation",
+    "q": "(+)/(−) 광회전 표기의 뜻은?",
+    "a": "(+) dextrorotatory=편광면 시계방향, (−) levorotatory=반시계방향. 관찰각 부호 그대로."
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-28-1",
+  "session": "Day 32 · Ch.5-5~7 (R/S·부분입체·meso)",
+  "weak": [
+   "c5-06"
+  ],
+  "addCards": [
+   {
+    "id": "c5-09",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "CIP tie-break",
+    "q": "CIP 서열에서 첫 원자가 동점이면? (그룹 통째 비교 ✗)",
+    "a": "원자별·층별로. 그 원자에 직접 붙은 원자들을 큰 순서로 정렬 → 상대와 1등끼리·2등끼리 비교, 처음 차이나는 원자에서 결판. 안쪽 층이 완전히 동점일 때만 바깥으로(높은 가지부터). 개수가 아니라 '1등 원자 크기'가 최우선."
+   },
+   {
+    "id": "c5-10",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "CIP rule 3 duplicate",
+    "q": "CIP 규칙 3 — 이중·삼중결합은 어떻게 세나? 왜?",
+    "a": "다중결합 = 복제(phantom) 원자. C=O → 그 C는 (O,O,·)·그 O는 (C,C)로 봄. C≡N → C는 (N,N,N). 단일결합만의 원자와 붙은 개수를 공평히 맞춰 비교하려고."
+   },
+   {
+    "id": "c5-11",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "R/S procedure + trap",
+    "q": "R/S 배정 절차와, 4번이 관찰자 앞(쐐기)일 때 처리는?",
+    "a": "4번(최저)을 뒤로 두고 1→2→3: 시계=R(rectus)·반시계=S(sinister). 4번이 앞(쐐기)이면 보이는 방향을 뒤집어 판정. 4번이 평면이면 스왑 1회=배치 반전으로 뒤로 보낸 뒤 읽음."
+   },
+   {
+    "id": "c5-12",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "rotation vs R/S",
+    "q": "R/S 표기와 선광 방향(+/−)은 관계 있나?",
+    "a": "무관. (S)-글리세르알데하이드는 (−), (S)-알라닌은 (+). 부호·크기는 R/S로 예측 불가한 실험값. 절대배치는 1951 X선 회절로 확정."
+   },
+   {
+    "id": "c5-13",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "diastereomer vs enantiomer",
+    "q": "거울상(enantiomer) vs 부분입체(diastereomer) 정의 차이는?",
+    "a": "enantiomer = 모든 키랄중심 배치 반대(거울상). diastereomer = 일부만 반대·일부는 같음(거울상 아닌 입체이성질체). 예: 2R,3R의 부분입체 = 2R,3S·2S,3R."
+   },
+   {
+    "id": "c5-14",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "2^n rule",
+    "q": "키랄중심 n개면 입체이성질체 몇 개? 언제 그보다 적어지나?",
+    "a": "최대 2ⁿ. meso가 생기면(내부 대칭으로 두 이성질체가 동일해짐) 그보다 적음. 예: 타르타르산 2²=4가 아니라 3(거울상 2 + meso 1)."
+   },
+   {
+    "id": "c5-15",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "epimer",
+    "q": "epimer(에피머)란?",
+    "a": "키랄중심이 여럿인데 딱 하나만 배치가 다른 부분입체이성질체. 예: 콜레스탄올·코프로스탄올 = 9중심 중 C5 하나만 다름."
+   },
+   {
+    "id": "c5-16",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "meso compound",
+    "q": "meso 화합물은 왜 키랄중심이 있는데도 아키랄(광학불활성)인가?",
+    "a": "분자 내부에 대칭면 → 자기 거울상과 겹침 → 아키랄. 한 중심(R)이 다른 중심(S)을 상쇄. 예: meso-타르타르산(2R,3S), cis-1,2-다이메틸시클로뷰테인."
+   },
+   {
+    "id": "c5-17",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "diastereomer properties",
+    "q": "meso(부분입체)와 (+)/(−)형의 물성이 다른 이유는? '물성 동일' 규칙의 경계는?",
+    "a": "'물성 동일'은 enantiomer(거울상)끼리만 성립. diastereomer는 서로 다른 화합물이라 mp·용해도·[α] 모두 다름. meso-타르타르산 mp 146–148 vs (±) 168–170, [α]=0."
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-29-1",
+  "session": "Day 33 · Ch.5-8~12 (Ch.5 본문 완주)",
+  "mastered": [
+   "c5-06"
+  ],
+  "weak": [
+   "c5-22"
+  ],
+  "addCards": [
+   {
+    "id": "c5-18",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "resolution",
+    "q": "라세미 혼합물의 두 거울상을 어떻게 분리(분할)하나? 시약 조건은?",
+    "a": "거울상은 물성 동일→직접 분리 불가. 순수 단일 거울상 키랄시약(예 키랄 아민)과 반응→부분입체(diastereomer) 염 형성→물성(용해도)차로 재결정 분리→강산으로 시약 떼어 순수 거울상 회수. 시약이 라세믹이면 4염이 되어 다시 라세믹→반드시 단일 거울상."
+   },
+   {
+    "id": "c5-19",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "N vs P chirality (pyramidal inversion)",
+    "q": "아민 N은 서로 다른 3그룹+비공유쌍인데 왜 키랄중심이 아닌가? 포스핀 P는?",
+    "a": "N=피라미드 반전(우산 뒤집힘) 초고속(~6 kcal/mol)→R⇄S 순간 상호전환→분리 불가→키랄중심 ✗. 포스핀 P=반전장벽 높음(~30–35)→반전 느림→분리 가능→진짜 키랄중심. McMurry가 phosphine을 예로 든 이유."
+   },
+   {
+    "id": "c5-20",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "pro-R/pro-S determination",
+    "q": "프로키랄 sp³의 두 쌍둥이를 pro-R/pro-S로 어떻게 가르나? D-치환 편법의 한계?",
+    "a": "쌍둥이 중 하나에게 '다른 쌍둥이보다만' 높은 우선순위 부여(실제 치환 ✗)→R/S 판정, R이면 pro-R. 실제 원자 안 바꾸니 상위 순위 교란 없음·쌍둥이가 중간·상위여도 무관. D-치환은 편법이라 이미 D가 있으면 깨짐."
+   },
+   {
+    "id": "c5-21",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "Re/Si faces",
+    "q": "sp² 삼각중심의 프로키랄 면(Re/Si)은 어떻게 정하나?",
+    "a": "세 그룹 CIP 1→2→3이 시계=Re·반시계=Si. 한 면에 그룹 하나 첨가로 키랄 생성(2-뷰탄온 Re면에 H→(S)-뷰탄올, Si면→(R)). '단일 스텝'=그 원자 자리에 그룹 하나 첨가."
+   },
+   {
+    "id": "c5-22",
+    "ch": "Ch.5",
+    "st": "weak",
+    "topic": "anti addition Re/Si trap",
+    "q": "이중결합에 anti(반대편) 첨가하면 두 탄소의 Re/Si는 반드시 갈리나? (아코니테이스 함정)",
+    "a": "아니오. Re/Si는 물리적 위/아래가 아니라 각 탄소의 치환기로 따로 계산. 두 탄소 배열이 다르면 물리적 반대편(anti)이어도 둘 다 Re일 수 있음. cis-aconitate 수화: OH·H 둘 다 Re면, 서로 anti→(2R,3S)."
+   },
+   {
+    "id": "c5-23",
+    "ch": "Ch.5",
+    "st": "learned",
+    "topic": "chirality in nature / why prochirality",
+    "q": "왜 거울상이 생체에서 다르게 작용하나? 프로키랄을 배우는 진짜 이유는?",
+    "a": "효소·수용체가 키랄→한쪽 거울상만 결합(손-장갑, 3점 결합). 효소가 프로키랄 기질의 pro-R/pro-S·Re/Si를 구별(NAD 특정 H 이동, 시트르산 특정 팔=Ogston). 명명이 목적이 아니라 '똑같아 보이는 것을 생체가 구별'이 핵심."
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-07-31-1",
+  "session": "Day 34 · Ch.5 연습/장끝 + Ch.6-1~3 진입",
+  "mastered": [
+   "c5-22"
+  ],
+  "weak": [],
+  "addCards": [
+   {
+    "id": "c6-01",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "유기반응 4종",
+    "q": "유기반응 4종류와 각각의 원자 수지(반응물↔생성물)는?",
+    "a": "첨가=둘이 합쳐 하나(남는 원자 ✗) / 제거=하나가 둘로(작은 분자 방출, 첨가의 역) / 치환=두 반응물이 부분 교환→새 두 분자 / 자리옮김=한 분자 내 결합·원자 재배치→이성질체."
+   },
+   {
+    "id": "c6-02",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "homolytic vs heterolytic",
+    "q": "2전자 공유결합이 깨지는 두 방식? (전자 분배·화살표·반응종류)",
+    "a": "homolytic=대칭, 전자 하나씩 각 조각으로, 낚싯바늘(반쪽) 화살표, radical. heterolytic=비대칭, 두 전자 다 한쪽으로(반대쪽 빈 오비탈), 완전 굽은 화살표, polar."
+   },
+   {
+    "id": "c6-03",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "radical vs polar 화학종",
+    "q": "radical과 polar(이온) 화학종의 전자 수 차이? 어느 쪽이 흔한가?",
+    "a": "radical=홀수 전자(홀전자 1개). polar=짝수 전자(전자쌍만, 이온). polar 반응이 유기·생화학에서 압도적으로 흔함(책 대부분이 polar)."
+   },
+   {
+    "id": "c6-04",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "라디칼 사슬 3단계",
+    "q": "라디칼 사슬반응 3단계와 각 역할? (메테인 염소화)",
+    "a": "개시(initiation)=빛으로 Cl–Cl 균일분해→Cl· 소수 생성. 전파(propagation)=Cl·+CH4→HCl+·CH3, ·CH3+Cl2→CH3Cl+Cl· (Cl· 재생→자기지속 사슬). 종결(termination)=라디칼 둘이 결합→사슬 끊김."
+   },
+   {
+    "id": "c6-05",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "라디칼 염소화 합성 부적합",
+    "q": "라디칼 염소화가 합성용으로 별로인 이유? (2-메틸펜테인 예)",
+    "a": "서로 다른 C–H가 여러 종류면 각각 치환→생성물 혼합물. 2-메틸펜테인 Cl2 → 일염소화물 5종(1-/2-/3-Cl-2-Me펜테인, 2-/1-Cl-4-Me펜테인). 한 자리만 선택 안 됨."
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-08-03-1",
+  "session": "Day 35 — Ch.5 인터루드 완료 + Ch.6-4~6",
+  "addCards": [
+   {
+    "id": "c6-06",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "nu/electrophile",
+    "q": "극성반응은 왜 일어나나? nucleophile·electrophile을 전자 관점에서 정의?",
+    "a": "전자 풍부 자리와 전자 부족 자리의 정전기적 끌림. nucleophile=전자쌍 공여(고립쌍/π, 전자풍부), electrophile=전자쌍 수용(δ+·빈 오비탈). 결합은 nu→e로 전자 흐름. 한 분자가 자리에 따라 둘 다 가능(C=O: O 친핵·C 친전자)."
+   },
+   {
+    "id": "c6-07",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "polarizability",
+    "q": "분극성이 왜 중요? 큰 원자(I,S)가 좋은 핵친화체인 이유?",
+    "a": "큰 원자=외곽 전자가 핵에서 멀어 느슨→접근하는 전하에 전자구름 쉽게 쏠림(왜곡). 멀리서도 결합 시작→반응성↑. 친핵성은 전기음성도가 아니라 '내줄 전자쌍+느슨함'에서 옴."
+   },
+   {
+    "id": "c6-08",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "HBr+ethylene",
+    "q": "HBr+에틸렌 메커니즘 단계·중간체? 첨가 생성물 분자식?",
+    "a": "2단계. ①π→H(새 C–H)·H–Br 불균일분해(전자 다 Br로→Br⁻)→카보양이온 CH₃CH₂⁺. ②Br⁻ 고립쌍→C⁺→CH₃CH₂Br. 첨가=C₂H₅Br(H 4→5, C₂H₃Br 아님)."
+   },
+   {
+    "id": "c6-09",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "curved arrows",
+    "q": "굽은 화살표 규칙? 꼬리·머리·방향?",
+    "a": "전자쌍의 이동. 꼬리=전자 공급원(고립쌍 또는 결합), 머리=친전자성 자리(새 결합 생기는 곳). 방향 언제나 nu→e, 반대 ✗. 낚싯바늘(반쪽)=홀전자 1개."
+   }
+  ],
+  "weak": [
+   "c5-04",
+   "c6-02",
+   "c6-03",
+   "c6-04",
+   "c6-05"
+  ],
+  "mastered": [
+   "c6-01"
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-08-04-1",
+  "session": "Day 36 — Ch.6-7~9 (평형·속도·에너지 / BDE / 에너지도표·전이상태)",
+  "weak": [
+   "c5-04",
+   "c6-05"
+  ],
+  "mastered": [
+   "c6-04",
+   "c6-02",
+   "c6-03",
+   "c6-07",
+   "c6-09"
+  ],
+  "addCards": [
+   {
+    "id": "c6-10",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "열역학 vs 속도론",
+    "q": "ΔG°와 ΔG‡는 각각 반응의 무엇을 결정하나?",
+    "a": "ΔG°=열역학(얼마나 유리한가·평형 위치·Keq). ΔG‡=속도론(얼마나 빠른가). 서로 독립 — 아무리 발열이어도 ΔG‡ 높으면 느림."
+   },
+   {
+    "id": "c6-11",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "Keq↔ΔG° 부호",
+    "q": "ΔG°=−RT ln Keq. Keq>1이면 ΔG° 부호와 우세한 쪽은?",
+    "a": "Keq>1 → ln Keq>0 → ΔG°<0(exergonic), 생성물 우세. Keq<1 → ΔG°>0, 반응물 우세."
+   },
+   {
+    "id": "c6-12",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "자발성=두 축 경쟁",
+    "q": "결합이 더 약해지는데도(ΔH 불리) 반응이 자발적일 수 있는 이유?",
+    "a": "자발성=엔탈피(결합 세기)+엔트로피(무질서)의 합, ΔG=ΔH−TΔS. 무질서 증가(TΔS>0)가 엔탈피 손해를 이기면 ΔG<0. 예: 얼음이 녹음(ΔH>0인데도 상온 자발적)."
+   },
+   {
+    "id": "c6-13",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "전이상태 vs 중간체",
+    "q": "전이상태와 중간체 — 에너지 도표 위치와 분리 가능성?",
+    "a": "전이상태=봉우리(에너지 최대), 분리 불가(순간적). 중간체=골짜기(국소 최소), 분리 가능(실제 물질)."
+   },
+   {
+    "id": "c6-14",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "BDE 정의",
+    "q": "결합해리에너지(BDE, D)의 정의와 부호는?",
+    "a": "기체상 25°C에서 결합을 homolytic하게 끊어 두 라디칼을 만드는 데 필요한 에너지. 항상 양수(깨기=에너지 투입). 강한 결합일수록 큰 BDE."
+   }
+  ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-08-05-1",
+  "session": "Day 37 — Ch.6-10~11 (중간체·생체vs실험실) + Ch.6 완주·인터루드",
+  "weak": [
+   "c5-04",
+   "c6-15",
+   "c6-19",
+   "c6-20",
+   "c6-21",
+   "c6-22",
+   "c6-23",
+   "c6-24",
+   "c6-25",
+   "c6-26",
+   "c6-27",
+   "c6-28",
+   "c6-29",
+   "c6-16",
+   "c6-17",
+   "c6-18"
+  ],
+  "mastered": [
+   "c6-05",
+   "c6-12",
+   "c6-13",
+   "c6-14"
+  ],
+  "addCards": [
+   {
+    "id": "c6-15",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "전체 ΔG‡ 기준점",
+    "q": "봉우리가 둘 이상인 반응에서 전체 ΔG‡는 어디서 어디까지?",
+    "a": "반응물 → 가장 높은 전이상태. 기준점은 항상 출발 반응물이며 중간체가 아니다. (시작~끝의 차이는 ΔG°)"
+   },
+   {
+    "id": "c6-16",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "속도결정단계",
+    "q": "속도결정단계(rate-limiting step)는 어떻게 찾는가?",
+    "a": "가장 높은 봉우리를 넘는 단계. 첫 단계라고 정해져 있지 않다."
+   },
+   {
+    "id": "c6-17",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "중간체 분리 불가",
+    "q": "중간체는 골짜기(극소)에 있는데 왜 보통 분리할 수 없는가?",
+    "a": "골짜기가 얕아서(다음 장벽이 낮음) 곧장 더 낮은 생성물로 굴러간다. 카보양이온은 옥텟 미충족 고에너지 종이라 수명이 극히 짧다."
+   },
+   {
+    "id": "c6-18",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "효소는 ΔG‡만",
+    "q": "효소가 바꾸는 것은 ΔG‡ 인가 ΔG° 인가?",
+    "a": "ΔG‡만 낮춘다 → 속도만 빨라지고 평형 위치는 그대로. 대가로 크고 복잡한 효소·복잡한 조효소·매우 높은 기질 특이성이 필요."
+   },
+   {
+    "id": "c6-19",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "대표 친전자 자리",
+    "q": "유기 분자에서 대표 친전자 자리 세 곳은?",
+    "a": "① 카보닐 탄소(C=O의 C) ② EN 큰 원자에 결합한 탄소(δ+) ③ 카보양이온. ★C=O의 C는 δ+일 뿐 카보양이온이 아니다(옥텟 정상)."
+   },
+   {
+    "id": "c6-20",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "대표 친핵 자리",
+    "q": "유기 분자에서 대표 친핵 자리 세 곳은?",
+    "a": "① N·O의 비공유 전자쌍(아민 N이 대표 — 루이스 염기) ② C=C·방향족의 π 전자 ③ 음이온(카바니온 CH3⁻, 알콕사이드)."
+   },
+   {
+    "id": "c6-21",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "카보닐 친전자성",
+    "q": "카보닐 탄소가 친전자성인 이유는?",
+    "a": "O의 전기음성도가 커서 C=O가 분극 → C가 δ+. 친핵체는 항상 이 탄소를 공격한다."
+   },
+   {
+    "id": "c6-22",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "라디칼: 알케인 vs 알켄",
+    "q": "라디칼이 알케인을 만나면? 알켄을 만나면?",
+    "a": "알케인(π 없음) → C–H에서 H 뽑아가기(abstraction), HX 생성. 알켄(π 있음) → π 결합에 붙기(addition), 할로젠은 한 탄소·홑전자는 옆 탄소. π가 있으면 무조건 붙이기."
+   },
+   {
+    "id": "c6-23",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "라디칼 첨가 화살표",
+    "q": "라디칼이 알켄에 첨가될 때 반쪽 화살표 3개의 행선지는?",
+    "a": "① 라디칼 홑전자 → 새 결합 ② π 전자 하나 → 같은 새 결합 ③ π 전자 나머지 → 옆 탄소(새 라디칼). π 전자쌍이 반으로 쪼개진다."
+   },
+   {
+    "id": "c6-24",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "라디칼 위치선택",
+    "q": "라디칼 첨가에서 어느 탄소에 홑전자를 남길지 정하는 기준은?",
+    "a": "더 안정한 라디칼이 남는 쪽. 옆에 O·N 비공유 전자쌍이나 π계(벤질·알릴)가 있으면 그쪽에 홑전자. 대칭 분자면 구별 없음."
+   },
+   {
+    "id": "c6-25",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "단일 모노클로로 조건",
+    "q": "라디칼 염소화로 단일 모노클로로 생성물이 나오는 조건은?",
+    "a": "분자 안의 C–H가 전부 동등할 때. ① H 가진 탄소만 추림 ② 대칭으로 묶음 ③ 묶음 1개. 에테인·사이클로헥세인·2-뷰타인·헥사메틸벤젠 ⭕ / 프로페인·2,2-다이메틸뷰테인 ✗."
+   },
+   {
+    "id": "c6-26",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "exothermic vs exergonic",
+    "q": "exothermic과 exergonic의 차이는?",
+    "a": "exothermic/endothermic=ΔH 부호(열). exergonic/endergonic=ΔG 부호(자발성). ΔG=ΔH−TΔS 이므로 발열≠자발. Keq로 알 수 있는 건 ΔG뿐, ΔH는 알 수 없다."
+   },
+   {
+    "id": "c6-27",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "Keq 기준선",
+    "q": "Keq의 기준선은?",
+    "a": "1 (0이 아님 — 농도의 비이므로 항상 양수). K>1↔ΔG°<0, K=1↔ΔG°=0, K<1↔ΔG°>0."
+   },
+   {
+    "id": "c6-28",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "이온화 1단계",
+    "q": "3차 R–Cl이 물과 반응할 때 첫 단계는?",
+    "a": "이온화(불균일 분해). 화살표 하나: 꼬리는 C–Cl 결합, 머리는 Cl. 공격자 없이 저절로 쪼개져 카보양이온 + Cl⁻. 가장 느린 속도결정단계. (Ch.11 SN1 1단계)"
+   },
+   {
+    "id": "c6-29",
+    "ch": "Ch.6",
+    "st": "learned",
+    "topic": "화살표 위 시약",
+    "q": "반응식 화살표 위에 쓴 시약은 반드시 생성물에 들어가는가?",
+    "a": "✗. 친핵체로 참여(결합 생성)할 수도, 염기로 양성자만 떼갈 수도, 촉매·용매·조건(Heat/Light/acid cat.)일 수도. 생성물을 보고 역추적해서 판단."
+   }
+  ]
+ }
 ]
