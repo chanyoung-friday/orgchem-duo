@@ -796,5 +796,77 @@
     "a": "✗. 친핵체로 참여(결합 생성)할 수도, 염기로 양성자만 떼갈 수도, 촉매·용매·조건(Heat/Light/acid cat.)일 수도. 생성물을 보고 역추적해서 판단."
    }
   ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-08-06-1",
+  "session": "Day 38 — Ch.7-1~7-4 (제법·불포화도·명명·cis–trans) + 4절/일 밀기 재기준화(완주 8/26)",
+  "weak": [
+   "c6-16",
+   "c6-17",
+   "c6-18",
+   "c6-19",
+   "c6-20",
+   "c6-21",
+   "c6-22",
+   "c6-23",
+   "c6-24",
+   "c6-25",
+   "c6-28",
+   "c6-29",
+   "c7-01",
+   "c7-02",
+   "c7-03",
+   "c7-04",
+   "c7-05"
+  ],
+  "mastered": [
+   "c5-04",
+   "c6-15",
+   "c6-26",
+   "c6-27"
+  ],
+  "addCards": [
+   {
+    "id": "c7-01",
+    "ch": "Ch.7",
+    "st": "new",
+    "topic": "불포화도 보정",
+    "q": "Degree of unsaturation: halogen·oxygen·nitrogen 보정은?",
+    "a": "각 원자의 결합 수로 결정. Halogen(1결합)=H처럼 세어 +H. Oxygen(2결합)=사슬에 끼워도 H 불변→무시. Nitrogen(3결합)=삽입 시 H 하나 남아 +1H 되므로 −N. 식: (2C+2+N−H−X)/2."
+   },
+   {
+    "id": "c7-02",
+    "ch": "Ch.7",
+    "st": "new",
+    "topic": "cis–trans 판별",
+    "q": "When can an alkene show cis–trans isomerism?",
+    "a": "Only when EACH double-bond carbon bears two DIFFERENT groups. If either carbon carries two identical groups, flipping gives the same molecule → no cis–trans. (π 결합이 못 돌아 두 배열이 별개 화합물.)"
+   },
+   {
+    "id": "c7-03",
+    "ch": "Ch.7",
+    "st": "new",
+    "topic": "cis/trans=diastereomer",
+    "q": "cis-2-butene와 trans-2-butene의 이성질체 관계는?",
+    "a": "부분입체 이성질체(diastereomer). 연결성 동일→구조이성질체 ✗, 거울상 아님→enantiomer ✗, 고로 stereoisomer 中 diastereomer. cis/trans(=E,Z)는 항상 diastereomer."
+   },
+   {
+    "id": "c7-04",
+    "ch": "Ch.7",
+    "st": "new",
+    "topic": "알켄 명명 우선+a탈락",
+    "q": "알켄 명명: 최장사슬 규칙과 어미 'a' 처리는?",
+    "a": "① '이중결합을 포함한' 최장사슬 선택 — 단순 최장사슬 ✗(작용기 우선). ② 어간 끝 'a'는 뒤가 모음이면 탈락(hexa+ene→hex-2-ene), 자음이면 유지(hexa+diene→hexa-1,3-diene)."
+   },
+   {
+    "id": "c7-05",
+    "ch": "Ch.7",
+    "st": "new",
+    "topic": "이성질체 열거 누락 방지",
+    "q": "불포화도 2를 보고 구조를 열거할 때 놓치기 쉬운 것은?",
+    "a": "삼중결합과 고리. 불포화도 2 = {이중결합 2 / 고리+이중결합 / 고리 2 / 삼중결합 1} 네 부류를 항상 훑을 것. (7-1에서 butyne 누락 반성.)"
+   }
+  ]
  }
 ]
