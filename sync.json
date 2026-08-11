@@ -1047,5 +1047,59 @@
     "a": "'이웃의 모든 H'가 아니다. 인접 CH2의 두 H는 한쪽만 p와 나란하고 다른 쪽은 거의 평면 안에 눕는다 → 주어진 형태(conformation)에서 이웃 탄소당 대체로 하나. 문제가 'in the conformation shown'이라고 명시하면 반드시 그림의 기하를 보고 셀 것."
    }
   ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-08-11-1",
+  "session": "Day 41 — Ch.8-1~8-4 (제거반응 예고·할로젠화·할로하이드린·옥시수은화) · Ch.8 진입",
+  "weak": [
+   "c8-02",
+   "c8-04",
+   "c7-13",
+   "c7-15",
+   "c7-27",
+   "c6-29",
+   "c7-14",
+   "c7-26"
+  ],
+  "mastered": [
+   "c7-03",
+   "c7-05",
+   "c6-16"
+  ],
+  "addCards": [
+   {
+    "id": "c8-01",
+    "ch": "Ch.8",
+    "st": "new",
+    "topic": "마르코브니코프 ≠ 재배열",
+    "q": "마르코브니코프 규칙에 '재배열'이 포함되는가? 교재 원문은 무엇을 진술하는가?",
+    "a": "포함되지 않는다. §7-8 원문: (원본) 'In the addition of HX to an alkene, the H attaches to the carbon with fewer alkyl substituents and the X attaches to the carbon with more alkyl substituents.' (재진술) 'In the addition of HX to an alkene, the more highly substituted carbocation is formed as the intermediate rather than the less highly substituted one.' 두 진술 모두 HX 한정이며 재배열 언급이 없다. 재배열은 '자유 카보양이온이 실재한다'에서 나오는 별개 현상(c7-14)."
+   },
+   {
+    "id": "c8-02",
+    "ch": "Ch.8",
+    "st": "new",
+    "topic": "생성물 그리기 전 출발물 골격 검산",
+    "q": "메커니즘을 맞게 그리고도 생성물에서 실점하는 전형적 원인과 처방은?",
+    "a": "원인 = 전사(轉寫) 누락. 출발물의 치환기·고리 크기를 생성물로 옮겨 적을 때 흘린다. Day41 실증: 8-3 에서 1,2-다이메틸사이클로헥센의 메틸 2개를 H로 그림(사이클로헥센 생성물이 됨) / 8-5 에서 사이클로펜텐을 6원자 고리로 그림. 처방 = 생성물을 그리기 전에 출발물의 탄소 수·고리 크기·치환기 개수를 세고 시작."
+   },
+   {
+    "id": "c8-03",
+    "ch": "Ch.8",
+    "st": "new",
+    "topic": "다리형 이온 = anti 강제 스위치",
+    "q": "같은 알켄에 X2 를 넣으면 anti 만 나오고 HX 를 넣으면 cis/trans 혼합이 나온다. 무엇이 갈랐는가?",
+    "a": "중간체가 다리형(고리형)인가 평면인가. X2 → 브로모늄/클로로늄이 알켄의 한 면을 덮으므로 친핵체는 반대 면에서만 접근 → anti 강제(§8-2). HX → 친전자체가 H+ 라 다리가 없고 평면 카보양이온이 되므로 X- 가 양면 모두 접근 → 혼합물(8-4 문제). 입체화학이 곧 중간체의 지문."
+   },
+   {
+    "id": "c8-04",
+    "ch": "Ch.8",
+    "st": "new",
+    "topic": "마르코브니코프를 물·HOX 에 적용하기",
+    "q": "HO-Br 첨가나 수화 반응에 '마르코브니코프'라는 이름을 붙이려면 무엇을 명시해야 하는가?",
+    "a": "§7-8 원문은 HX 첨가에 한정해 진술되어 있다. 확장하려면 'H ↔ 친전자체(Br, Hg2+)', 'X ↔ 친핵체(OH)' 대응을 세워야 한다. 교재도 §8-4 에서 'corresponding to Markovnikov addition of water; the -OH group attaches to the more highly substituted carbon atom' 이라고 대응을 명시한 뒤에 그 이름을 쓴다. ⚠ '왜 친핵체가 더 치환된 탄소로 가는가'는 9판 §8-3 이 설명하지 않고 Problem 8-6 으로 남긴다."
+   }
+  ]
  }
 ]
