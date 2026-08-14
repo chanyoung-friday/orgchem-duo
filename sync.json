@@ -1249,5 +1249,76 @@
     "a": "아니다. 규칙 자체가 두 갈래를 열어 뒀다 — §8-12 원문 'an optically active product can only result by starting with an optically active reactant OR CHIRAL ENVIRONMENT'. 기질은 프로키랄(§5-11 '한 번의 화학 단계로 비키랄에서 키랄이 될 수 있는 분자'), 효소가 키랄 환경(§5-12 '오른손 장갑에는 오른손만 맞는다')이라 두 면이 chemically distinct 해지고 Re 면에서만 반응한다."
    }
   ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-08-14-1",
+  "session": "Day 44 — Ch.9-1~9-4 (알카인 명명·제법·HX/X2 첨가·수화) — Ch.9 진입",
+  "weak": [
+   "c8-15",
+   "c8-14",
+   "c9-04",
+   "c9-06",
+   "c8-12",
+   "c8-03",
+   "c9-05",
+   "c9-01",
+   "c8-16",
+   "c7-09"
+  ],
+  "mastered": [
+   "c9-02",
+   "c9-03"
+  ],
+  "addCards": [
+   {
+    "id": "c9-01",
+    "ch": "Ch.9",
+    "st": "new",
+    "topic": "바이닐 카보양이온",
+    "q": "바이닐 카보양이온은 얼마나 생기기 어려운가? 본문은 그 사실로부터 무엇을 결론짓는가?",
+    "a": "2차 바이닐 양이온은 '1차 알킬' 양이온과 맞먹는 정도로만 생긴다. 1차 바이닐 양이온은 'so difficult to form that there is no clear evidence it even exists'. 그래서 본문의 결론은 '불가능'이 아니라 'Thus, many alkyne additions occur through more complex mechanistic pathways' 이다. [§9-3]"
+   },
+   {
+    "id": "c9-02",
+    "ch": "Ch.9",
+    "st": "new",
+    "topic": "알카인 + HX 의 위치·입체화학",
+    "q": "알카인에 HX 를 1당량 넣으면 위치화학과 입체화학은?",
+    "a": "위치화학은 마르코브니코프 — 할로젠이 더 치환된 쪽. 입체화학은 trans. 단 본문은 단정하지 않는다: 'Trans stereochemistry of H and X normally, ALTHOUGH NOT ALWAYS, occurs in the product.' 과량이면 다이할라이드. [§9-3]"
+   },
+   {
+    "id": "c9-03",
+    "ch": "Ch.9",
+    "st": "new",
+    "topic": "케토-에놀 호변이성",
+    "q": "수화의 1차 생성물은 에놀인데 왜 손에 쥐는 것은 케톤인가?",
+    "a": "토토머 = 'two isomers that undergo spontaneous interconversion accompanied by the change in position of a HYDROGEN'. 옮겨가는 것은 수소다. 그리고 'the keto-enol tautomeric equilibrium lies on the side of the ketone; enols are almost never isolated.' [§9-4]"
+   },
+   {
+    "id": "c9-04",
+    "ch": "Ch.9",
+    "st": "new",
+    "topic": "말단 알카인 수화의 두 갈래",
+    "q": "말단 알카인 R-C≡C-H 하나를 놓고 Hg2+ 수화와 하이드로붕소화-산화는 각각 무엇을 주는가? 혼합물은 언제 나오는가?",
+    "a": "Hg2+ 는 메틸 케톤 R-CO-CH3 ('only a methyl ketone is formed'), 하이드로붕소화-산화는 알데하이드 R-CH2-CHO. 둘은 상보적이다. 혼합물은 말단이 아니라 '비대칭 내부 알카인'에 Hg2+ 를 쓸 때 나온다 — 그래서 Hg2+ 수화는 말단 알카인에 가장 유용하다. [§9-4]"
+   },
+   {
+    "id": "c9-05",
+    "ch": "Ch.9",
+    "st": "new",
+    "topic": "머큐레이션 중간체의 서술 차이",
+    "q": "머큐레이션의 중간체는 다리형인가? (사용자가 스스로 발견한 자리)",
+    "a": "기질에 따라 9판의 서술이 갈린다. 알켄 = mercurinium ion, 'whose structure resembles that of a bromonium ion' [§8-4]. 알카인 = 'a vinylic cation' / FIG 9-3 1단계 'a mercury-containing VINYLIC CARBOCATION intermediate' — 그림도 다리 없이 열린 양이온이다 [§9-4]. 본문은 'analogous to' 라고만 하고 이 차이의 이유를 제시하지 않는다. [본문 ✗]"
+   },
+   {
+    "id": "c9-06",
+    "ch": "Ch.9",
+    "st": "new",
+    "topic": "카보닐 → 알카인 역합성",
+    "q": "케톤/알데하이드를 알카인 수화로 만들려면 삼중결합을 어디에 놓아야 하는가?",
+    "a": "카보닐 탄소와 '바로 옆' 탄소가 원래 삼중결합 자리다. 그 사이에 CH2 를 끼우면 탄소 수가 어긋난다. 예: 2,5-다이메틸-3-헥산온 → (CH3)2CH-C≡C-CH(CH3)2 (대칭이라 생성물 1개). 옆 탄소가 CH2 가 될 수 있는지 먼저 확인할 것 — CH 라면 그 자리는 삼중결합이 아니다. [§9-4 적용]"
+   }
+  ]
  }
 ]
