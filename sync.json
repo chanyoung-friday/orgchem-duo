@@ -1378,5 +1378,75 @@
     "a": "아세틸렌 25 / 에틸렌 44 / 메테인 60 [Table 9-1]. 아세틸라이드 음이온의 탄소는 sp 혼성이라 음전하가 s 성격 50%인 궤도에 놓인다(바이닐 33%, 알킬 25%). s 궤도는 핵에 더 가깝고 에너지가 낮아 음전하를 더 잘 안정화한다 [§9-7]. Ch.2 산세기 4요인 중 '혼성화' 계열."
    }
   ]
+ },
+ {
+  "type": "orgchem-sync",
+  "sid": "2026-08-18-1",
+  "session": "Day 46 — 이월 문제 소진(9-8·9-9·9-10·9-11) + SR. 컨디션 저하로 9-9/인터루드는 Day47 이월",
+  "weak": [
+   "c9-07",
+   "c9-06",
+   "c8-10",
+   "c9-11",
+   "c7-09",
+   "c9-04"
+  ],
+  "mastered": [
+   "c8-16",
+   "c9-08",
+   "c9-05",
+   "c9-12",
+   "c9-13"
+  ],
+  "addCards": [
+   {
+    "id": "c9-11",
+    "ch": "Ch.9",
+    "st": "new",
+    "topic": "이름을 대는 단계 (개념→용어 인출)",
+    "q": "다음 정의에 해당하는 용어를 '한 단어'로 답하라. ① 키랄 중심이 둘 이상인데 분자 내 대칭면 때문에 광학 비활성인 화합물 ② 거울상이 아닌 입체이성질체 ③ 그 자체는 키랄이 아니지만 한 번의 치환으로 키랄 중심이 생기는 성질",
+    "a": "① meso ② 부분입체이성질체(diastereomer) ③ 프로키랄(prochiral). 진단: 설명은 정확한데 이름이 안 나오는 패턴이 Day44~46 반복(meso·부분입체이성질체·'메틸' 케톤). 프로키랄은 '이름을 직접 묻는 형식'으로 즉시 해제됨 → 이 형식을 고정한다."
+   },
+   {
+    "id": "c9-12",
+    "ch": "Ch.9",
+    "st": "mastered",
+    "topic": "trans 알켄 + Br2 anti = meso",
+    "q": "2-부타인을 Li/NH3로 처리한 뒤 Br2 1당량을 첨가하면 최종 생성물은 광학 활성인가?",
+    "a": "비활성. Li/NH3 → trans-2-뷰텐 [§9-5], Br2는 anti 첨가 [§8-2] → (2R,3S) = meso 단일 생성물(분자 내 대칭면). cis였다면 (R,R)+(S,S) 라세미가 되어 역시 비활성이지만 이유가 다르다. Day46 전이 문항에서 추론은 자력 완성, 이름(meso)만 미상기."
+   },
+   {
+    "id": "c9-13",
+    "ch": "Ch.9",
+    "st": "mastered",
+    "topic": "아세틸라이드로 탈양성자화 가능한 기질",
+    "q": "아세톤(pKa 19.3)을 탈양성자화할 수 있는 염기는? KOH(15.7) / Na+ -C≡CH(25) / NaHCO3(6.4) / NaOCH3(15.6)",
+    "a": "아세틸라이드만 가능. 짝산 pKa 25 > 19.3 이므로 평형이 아세톤 탈양성자화 쪽으로 간다. 나머지 셋은 짝산이 아세톤보다 강산이라 평형이 반대 [Problem 9-9, Table 9-1]."
+   },
+   {
+    "id": "c9-07",
+    "ch": "Ch.9",
+    "st": "weak",
+    "topic": "Lindlar가 멈추는 이유 — Pd/C와 대비",
+    "q": "Pd/C와 Lindlar에 각각 H2를 쓰면 알카인은 어디까지 가는가? 그리고 Lindlar가 서는 이유는?",
+    "a": "Pd/C = 알케인까지 완전 환원. Lindlar = 알켄에서 정지. 이유는 기질이 아니라 촉매: 'Complete reduction to the alkane occurs when palladium on carbon (Pd/C) is used as catalyst, but hydrogenation can be stopped at the alkene stage if the less active Lindlar catalyst is used ... deactivated by treatment with lead acetate and quinoline' [§9-5]. ΔH°(-176 vs -137 kJ/mol)는 안정성만 말하고 어디서 서는지는 말하지 않는다. Day45·46 연속 실패 + 같은 세션에 9-8(b)·9-8(c)·9-11 에서 4회 재발."
+   },
+   {
+    "id": "c8-10",
+    "ch": "Ch.8",
+    "st": "weak",
+    "topic": "syn 첨가인데 생성물 2개 — 그 관계의 이름",
+    "q": "syn 첨가 반응인데 생성물이 두 개 나올 때, 그 둘 사이의 관계를 부르는 정확한 용어는?",
+    "a": "부분입체이성질체(diastereomer). 이유(반응이 알켄의 두 면에 같은 확률로 일어나고, 기존 키랄 중심이 있으면 거울상이 아닌 관계가 된다)는 Day45에 자력 재구성 완료. 이름만 3연속 실패: Day45 'cis/trans', Day46 'stereoisomer'. 🔴 승격, 이름만 묻는 형식으로."
+   },
+   {
+    "id": "c7-09",
+    "ch": "Ch.7",
+    "st": "weak",
+    "topic": "알켄 안정성 — 문구 정정판",
+    "q": "치환 정도에 따른 알켄 안정성 순서를 만드는 요인은 본문상 몇 가지이며 무엇인가? cis/trans 차이는 어디에 속하는가?",
+    "a": "본문은 'a combination of two factors': ① 초공액(hyperconjugation) ② 결합 세기 — 'A bond between an sp2 carbon and an sp3 carbon is somewhat stronger than a bond between two sp3 carbons' (주어는 결합이지 원자가 아님; 치환↑ → sp3-sp2 결합 비율↑). cis/trans 차이는 별개 항목 = 입체 변형(steric strain) [§7-6]. ※ 이전 카드가 '3요인'으로 뭉뚱그려져 있던 것은 Claude 기록 오류, 2026-08-18 정정."
+   }
+  ]
  }
 ]
